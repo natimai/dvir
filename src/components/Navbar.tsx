@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { AppBar, Toolbar, IconButton, Drawer, List, ListItem, ListItemText, Button, Container, Box } from '@mui/material';
+import { AppBar, Toolbar, IconButton, Drawer, List, ListItem, ListItemText, Container, Box } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import styled from '@emotion/styled';
 

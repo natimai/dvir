@@ -218,7 +218,7 @@ const Home = () => {
         </Container>
       </Section>
 
-      <Section sx={{ backgroundColor: '#f8fafc' }}>
+      <Section>
         <Container maxWidth="lg">
           <Typography variant="h2" align="center" gutterBottom>
             איך זה עובד?
@@ -267,6 +267,7 @@ const Home = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
+                style={{ backgroundColor: '#f8fafc' }}
               >
                 <Box
                   component="img"
