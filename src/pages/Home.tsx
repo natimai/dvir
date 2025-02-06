@@ -1,9 +1,8 @@
-import { Container, Typography, Button, Box, Grid, IconButton } from '@mui/material';
+import { Container, Typography, Button, Box, Grid } from '@mui/material';
 import { motion } from 'framer-motion';
 import styled from '@emotion/styled';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import MusicNoteIcon from '@mui/icons-material/MusicNote';
-import GroupsIcon from '@mui/icons-material/Groups';
 import FloatingEmojis from '../components/FloatingEmojis';
 
 const HeroSection = styled.section`
