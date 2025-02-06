@@ -4,8 +4,7 @@ import styled from '@emotion/styled';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import MusicNoteIcon from '@mui/icons-material/MusicNote';
 import FloatingEmojis from '../components/FloatingEmojis';
-import { useState, useRef } from 'react';
-import PauseIcon from '@mui/icons-material/Pause';
+import { useState } from 'react';
 import { TestimonialsSection } from '../components/TestimonialsSection';
 import CloseIcon from '@mui/icons-material/Close';
 
@@ -273,30 +272,7 @@ const PauseButton = styled(motion.button)<{ isPaused: boolean }>`
 `;
 
 const Home = () => {
-  const [isPaused, setIsPaused] = useState(false);
-  const [dragStartX, setDragStartX] = useState(0);
-  const trackRef = useRef<HTMLDivElement>(null);
   const [selectedMember, setSelectedMember] = useState<typeof team[0] | null>(null);
-
-  const handleDragStart = (event: any) => {
-    setDragStartX(event.clientX);
-  };
-
-  const handleDragEnd = (event: any) => {
-    const dragEndX = event.clientX;
-    const dragDistance = dragEndX - dragStartX;
-    
-    if (Math.abs(dragDistance) > 100) {
-      setIsPaused(true);
-    }
-  };
-
-  // חישוב הרוחב הכולל של כל הביקורות
-  const calculateTotalWidth = () => {
-    const cardWidth = window.innerWidth >= 768 ? 400 : window.innerWidth - 64;
-    const gap = window.innerWidth >= 768 ? 24 : 16;
-    return testimonials.length * (cardWidth + gap);
-  };
 
   const handleOpenDialog = (member: typeof team[0]) => {
     setSelectedMember(member);

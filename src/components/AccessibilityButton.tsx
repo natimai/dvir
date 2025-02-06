@@ -81,7 +81,7 @@ export const AccessibilityButton = () => {
     setAnchorEl(null);
   };
 
-  const handleFontSizeChange = (event: Event, newValue: number | number[]) => {
+  const handleFontSizeChange = (_event: Event, newValue: number | number[]) => {
     const size = newValue as number;
     setFontSize(size);
     document.documentElement.style.fontSize = `${size}%`;

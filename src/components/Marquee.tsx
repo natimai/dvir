@@ -9,8 +9,21 @@ interface MarqueeProps extends ComponentPropsWithoutRef<"div"> {
   repeat?: number;
 }
 
-const cn = (...classes: (string | boolean | undefined)[]) => {
-  return classes.filter(Boolean).join(" ");
+type ClassValue = string | boolean | undefined | Record<string, boolean>;
+
+const cn = (...classes: ClassValue[]) => {
+  return classes
+    .map((cls) => {
+      if (typeof cls === 'string' || typeof cls === 'boolean' || cls === undefined) {
+        return cls;
+      }
+      return Object.entries(cls)
+        .filter(([_, value]) => value)
+        .map(([key]) => key)
+        .join(' ');
+    })
+    .filter(Boolean)
+    .join(" ");
 };
 
 export function Marquee({
