@@ -73,8 +73,8 @@ export const AccessibilityButton = () => {
   const [highContrast, setHighContrast] = useState<boolean>(false);
   const [reduceMotion, setReduceMotion] = useState<boolean>(false);
 
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget);
+  const handleClick = (_event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(_event.currentTarget);
   };
 
   const handleClose = () => {

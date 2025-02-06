@@ -10,8 +10,9 @@ interface MarqueeProps extends ComponentPropsWithoutRef<"div"> {
 }
 
 type ClassValue = string | boolean | undefined | Record<string, boolean>;
+type ClassObject = Record<string, boolean>;
 
-const cn = (...classes: ClassValue[]) => {
+const cn = (...classes: (ClassValue | ClassObject)[]) => {
   return classes
     .map((cls) => {
       if (typeof cls === 'string' || typeof cls === 'boolean' || cls === undefined) {
@@ -43,7 +44,7 @@ export function Marquee({
         {
           "flex-row": !vertical,
           "flex-col": vertical,
-        },
+        } as ClassObject,
         className
       )}
     >
@@ -57,7 +58,7 @@ export function Marquee({
               "animate-marquee-vertical flex-col": vertical,
               "group-hover:[animation-play-state:paused]": pauseOnHover,
               "[animation-direction:reverse]": reverse,
-            })}
+            } as ClassObject)}
           >
             {children}
           </div>
