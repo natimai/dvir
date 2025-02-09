@@ -164,7 +164,7 @@ const Home = () => {
               fontWeight: 700,
               textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)'
             }}>
-              ממשש ילדים כבר 15 שנה
+              מלווה ילדים במסע הבר מצווה כבר 15 שנה
             </Typography>
             <Typography variant="h5" gutterBottom sx={{ 
               mb: 6, 
@@ -173,7 +173,7 @@ const Home = () => {
               opacity: 0.9,
               textShadow: '1px 1px 2px rgba(0, 0, 0, 0.3)'
             }}>
-              מלמד בר מצווה ופייטנות בסגנון ספרדי ירושלמי מסורתי המשלב מסורת עתיקה עם נגיעות מודרניות
+              מלמד בר מצווה ופייטנות בסגנון ספרדי ירושלמי מסורתי, בשילוב ייחודי של מסורת עתיקה עם נגיעות מודרניות
             </Typography>
             <GradientButton
               variant="contained"
