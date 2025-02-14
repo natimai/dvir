@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dvir-daloya.co.il/sitemap.xml 
