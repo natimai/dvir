@@ -67,12 +67,17 @@ const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus(null);
     
     // Sanitize input
-    const sanitizedData = {
+    const sanitizedData: FormData = {
       name: DOMPurify.sanitize(formData.name),
       email: DOMPurify.sanitize(formData.email),
       phone: DOMPurify.sanitize(formData.phone),
+      eventDate: DOMPurify.sanitize(formData.eventDate),
+      eventType: DOMPurify.sanitize(formData.eventType),
+      package: DOMPurify.sanitize(formData.package),
       message: DOMPurify.sanitize(formData.message)
     };
 
@@ -96,14 +101,18 @@ const Contact = () => {
         name: '',
         email: '',
         phone: '',
+        eventDate: '',
+        eventType: '',
+        package: '',
         message: ''
       });
 
-      // Show success message
-      alert('ההודעה נשלחה בהצלחה!');
+      setSubmitStatus('success');
     } catch (error) {
       console.error('Error:', error);
-      alert('אירעה שגיאה בשליחת הטופס. אנא נסה שוב מאוחר יותר.');
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
