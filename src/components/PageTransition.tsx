@@ -8,22 +8,22 @@ interface PageTransitionProps {
 const pageVariants = {
   initial: {
     opacity: 0,
-    y: 20,
+    scale: 0.98,
   },
   enter: {
     opacity: 1,
-    y: 0,
+    scale: 1,
     transition: {
-      duration: 0.5,
-      ease: 'easeOut',
+      duration: 0.3,
+      ease: [0.645, 0.045, 0.355, 1.000], // Cubic bezier for smooth easing
     },
   },
   exit: {
     opacity: 0,
-    y: -20,
+    scale: 1.02,
     transition: {
-      duration: 0.3,
-      ease: 'easeIn',
+      duration: 0.2,
+      ease: [0.645, 0.045, 0.355, 1.000],
     },
   },
 };
@@ -35,6 +35,11 @@ export const PageTransition = ({ children }: PageTransitionProps) => {
       animate="enter"
       exit="exit"
       variants={pageVariants}
+      style={{
+        width: '100%',
+        height: '100%',
+        position: 'relative',
+      }}
     >
       {children}
     </motion.div>
