@@ -241,8 +241,14 @@ const Footer = () => {
         </Box>
 
         <Box sx={{ textAlign: 'center' }}>
-          <Typography variant="body2" component="p">
+          <Typography variant="body2" component="p" sx={{ mb: 1 }}>
             © {new Date().getFullYear()} דביר דלויה. כל הזכויות שמורות.
+          </Typography>
+          <Typography variant="body2" component="p" sx={{ 
+            color: 'rgba(255, 255, 255, 0.8)',
+            fontStyle: 'italic'
+          }}>
+            השירות ניתן על ידי עמותת למען באר שבע והנגב
           </Typography>
         </Box>
       </Container>
