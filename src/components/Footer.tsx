@@ -135,10 +135,10 @@ const Footer = () => {
               צור קשר
             </Typography>
             
-            <ContactItem href="tel:0501234567" aria-label="התקשר אלינו">
+            <ContactItem href="tel:+972586276261" aria-label="התקשר אלינו">
               <PhoneIcon aria-hidden="true" />
               <Typography variant="body2">
-                טלפון: 050-1234567
+                טלפון: 058-627-6261
               </Typography>
             </ContactItem>
             

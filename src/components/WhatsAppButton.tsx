@@ -23,8 +23,8 @@ const FloatingButton = styled(IconButton)`
 `;
 
 const WhatsAppButton = () => {
-  const phoneNumber = '972501234567'; // החלף למספר הטלפון שלך
-  const message = 'היי, אשמח לשמוע פרטים על שירותי הפייטנות והחזנות';
+  const phoneNumber = '972586276261'; // מספר הטלפון המעודכן של דביר
+  const message = 'היי דביר, אשמח לשמוע פרטים על שירותי הפייטנות והחזנות';
   
   const handleClick = () => {
     window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');

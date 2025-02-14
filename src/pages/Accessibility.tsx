@@ -81,7 +81,7 @@ const Accessibility = () => {
                 רכז הנגישות: דביר דלויה
               </Typography>
               <Typography>
-                טלפון: 050-1234567
+                טלפון: 058-627-6261
               </Typography>
               <Typography>
                 אימייל: dvir@example.com

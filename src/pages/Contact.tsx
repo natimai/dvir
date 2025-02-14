@@ -238,7 +238,7 @@ const Contact = () => {
                   טלפון
                 </Typography>
                 <Typography paragraph>
-                  050-1234567
+                  058-627-6261
                 </Typography>
                 
                 <Typography variant="h6" gutterBottom>
