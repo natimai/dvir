@@ -17,6 +17,7 @@ import {
 } from '@mui/material';
 import { motion } from 'framer-motion';
 import styled from '@emotion/styled';
+import DOMPurify from 'dompurify';
 
 const StyledPaper = styled(Paper)`
   padding: 32px;
@@ -66,25 +67,43 @@ const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
     
+    // Sanitize input
+    const sanitizedData = {
+      name: DOMPurify.sanitize(formData.name),
+      email: DOMPurify.sanitize(formData.email),
+      phone: DOMPurify.sanitize(formData.phone),
+      message: DOMPurify.sanitize(formData.message)
+    };
+
     try {
-      // כאן יהיה הקוד לשליחת הטופס לשרת
-      await new Promise(resolve => setTimeout(resolve, 1500)); // סימולציה של שליחה
-      setSubmitStatus('success');
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '',
+        },
+        body: JSON.stringify(sanitizedData),
+        credentials: 'same-origin'
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      // Reset form
       setFormData({
         name: '',
-        phone: '',
         email: '',
-        eventDate: '',
-        eventType: '',
-        package: '',
+        phone: '',
         message: ''
       });
+
+      // Show success message
+      alert('ההודעה נשלחה בהצלחה!');
     } catch (error) {
-      setSubmitStatus('error');
-    } finally {
-      setIsSubmitting(false);
+      console.error('Error:', error);
+      alert('אירעה שגיאה בשליחת הטופס. אנא נסה שוב מאוחר יותר.');
     }
   };
 
