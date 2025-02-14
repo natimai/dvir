@@ -21,15 +21,6 @@ const ServiceCard = styled(motion.div)`
   flex-direction: column;
 `;
 
-const PriceTag = styled.div`
-  background: #1e3a8a;
-  color: white;
-  padding: 8px 16px;
-  border-radius: 20px;
-  display: inline-block;
-  margin: 16px 0;
-`;
-
 const Services = () => {
   return (
     <>
