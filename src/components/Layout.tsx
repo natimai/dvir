@@ -39,11 +39,7 @@ const PageLoader = () => (
   />
 );
 
-interface LayoutProps {
-  children: ReactNode;
-}
-
-const Layout = ({ children }: LayoutProps) => {
+const Layout = () => {
   const location = useLocation();
 
   return (
