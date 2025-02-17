@@ -87,6 +87,7 @@ const menuItems = [
   { text: 'ראשי', path: '/' },
   { text: 'אודות', path: '/about' },
   { text: 'שירותים', path: '/services' },
+  { text: 'גלריה', path: '/gallery' },
   { text: 'שאלות נפוצות', path: '/faq' },
   { text: 'צור קשר', path: '/contact' },
 ];
