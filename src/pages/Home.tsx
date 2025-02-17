@@ -34,13 +34,13 @@ const HeroContent = styled(Box)`
   padding: 0 20px;
 `;
 
-const Section = styled('section')<{ theme?: Theme }>(({ theme }) => ({
-  padding: '80px 0',
-  position: 'relative',
-  '&.light-bg': {
-    backgroundColor: '#f8fafc'
+const Section = styled('section')`
+  padding: 80px 0;
+  position: relative;
+  &.light-bg {
+    background-color: #f8fafc;
   }
-}));
+`;
 
 const Card = styled(motion.div)`
   background: white;
@@ -163,22 +163,22 @@ const ProcessImage = styled.img`
   margin-bottom: 16px;
 `;
 
-const ContentImage = styled('img')<{ theme?: Theme }>(({ theme }) => ({
-  width: '100%',
-  height: '100%',
-  objectFit: 'cover',
-  borderRadius: '16px'
-}));
+const ContentImage = styled('img')`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+`;
 
-const QuestionCard = styled(Paper)<{ theme?: Theme }>(({ theme }) => ({
-  padding: '32px',
-  height: '100%',
-  transition: 'transform 0.3s ease',
-  borderRadius: '16px',
-  '&:hover': {
-    transform: 'translateY(-5px)'
+const QuestionCard = styled(Paper)`
+  padding: 32px;
+  height: 100%;
+  transition: transform 0.3s ease;
+  border-radius: 16px;
+  &:hover {
+    transform: translateY(-5px);
   }
-}));
+`;
 
 interface ProcessStep {
   title: string;
