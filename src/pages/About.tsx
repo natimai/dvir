@@ -1,12 +1,14 @@
-import { Container, Typography, Grid, Box, Paper } from '@mui/material';
+import { Container, Typography, Grid, Box, Paper, Button } from '@mui/material';
 import { motion } from 'framer-motion';
 import styled from '@emotion/styled';
+import { Link } from 'react-router-dom';
 
 const StyledPaper = styled(Paper)`
   padding: 32px;
   height: 100%;
   background-color: rgba(255, 255, 255, 0.9);
   transition: transform 0.3s ease;
+  border-radius: 16px;
   
   &:hover {
     transform: translateY(-5px);
@@ -22,6 +24,29 @@ const Section = styled.section`
   }
 `;
 
+const StorySection = styled(Section)`
+  background: linear-gradient(165deg, #1e3a8a 0%, #3b82f6 100%);
+  color: white;
+  padding: 120px 0;
+`;
+
+const StoryImage = styled.img`
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+`;
+
+const StoryCard = styled(motion.div)`
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  margin-bottom: 24px;
+`;
+
 const About = () => {
   return (
     <>
@@ -35,38 +60,104 @@ const About = () => {
                 transition={{ duration: 0.8 }}
               >
                 <Typography variant="h2" gutterBottom>
-                  קצת עלי
+                  דביר דלויה - הקול שמלווה את הרגעים המיוחדים שלכם
                 </Typography>
                 <Typography variant="h5" gutterBottom color="primary">
-                  14 שנות ניסיון בפייטנות וחזנות
+                  זמר מקצועי לאירועים ומלמד בר מצווה
                 </Typography>
                 <Typography paragraph>
-                  היי, נעים מאוד! אני דביר דלויה, פייטן וחזן שמופיע בתעשיית המוזיקה מעל 14 שנים,
-                  מאירועים פרטיים ועד היכלי תרבות. תמיד אהבתי לשלב בין מזרח ומערב,
-                  ובמיוחד את החזנות הספרדית הירושלמית.
-                </Typography>
-                <Typography paragraph>
-                  אחד הדברים היפים בהופעות שלי הוא האפשרות לקחת את הקהל למסע מוזיקלי עשיר,
-                  שנע על מנעד רחב מאוד - משיריה ולחניה של נעמי שמר, דרך חזנות ירושלמית מודרנית
-                  ועד לפיוטים מבית אבא מתקופת המאה ה-19.
+                  ברוכים הבאים לעולמו של דביר וצוות המוזיקאים המדהים שלו! דביר הוא זמר מוכשר עם תשוקה למוזיקה יהודית, והוא מלווה בכמה מהמוזיקאים יוצאי הדופן בתעשייה. יחד, הם מביאים רמה של אנרגיה והתרגשות לכל אירוע שאין שני לו.
                 </Typography>
               </motion.div>
             </Grid>
             <Grid item xs={12} md={6}>
-              <Box
-                component="img"
-                src="/images/about-main.jpg"
-                alt="דביר דלויה"
-                sx={{
-                  width: '100%',
-                  borderRadius: '8px',
-                  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-                }}
-              />
+              <StoryImage src="/gallery/orenk-140 Large.jpeg" alt="דביר דלויה" />
             </Grid>
           </Grid>
         </Container>
       </Section>
+
+      <StorySection>
+        <Container maxWidth="lg">
+          <Typography variant="h3" align="center" gutterBottom sx={{ mb: 6 }}>
+            הסיפור שלנו
+          </Typography>
+          
+          <Grid container spacing={4}>
+            <Grid item xs={12}>
+              <StoryCard
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+              >
+                <Typography variant="h5" gutterBottom>
+                  תשוקה למוזיקה
+                </Typography>
+                <Typography paragraph>
+                  מה שמייחד את הצוות שלנו הוא היכולת למזג בצורה חלקה מוזיקה יהודית מסורתית עם סגנונות וז'אנרים עכשוויים. הרפרטואר שלנו כולל הכל, משירי עם יהודיים קלאסיים ועד להיטי פופ מודרניים.
+                </Typography>
+              </StoryCard>
+
+              <StoryCard
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                <Typography variant="h5" gutterBottom>
+                  צוות מקצועי
+                </Typography>
+                <Typography paragraph>
+                  כל אחד מחברי הצוות הוא אמן בכלי שלו, בין אם זה גיטרה, מקלדת או תופים. הם עובדים יחד ללא רבב, ויוצרים צליל שהוא גם חזק וגם הרמוני. יחד, אנחנו יוצרים חוויה מוזיקלית שלמה ומרגשת.
+                </Typography>
+              </StoryCard>
+
+              <StoryCard
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+              >
+                <Typography variant="h5" gutterBottom>
+                  חוויה בלתי נשכחת
+                </Typography>
+                <Typography paragraph>
+                  דביר הוא שואומן אמיתי, עם קול שיכול ללכוד את תשומת הלב של כל קהל. הוא יודע לעסוק בקהל שלו וליצור אווירה של שמחה וחגיגה מושלמת לכל אירוע, מעלייה לתורה ועד בר מצווה והלאה.
+                </Typography>
+              </StoryCard>
+
+              <StoryCard
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+              >
+                <Typography variant="h5" gutterBottom>
+                  המחויבות שלנו
+                </Typography>
+                <Typography paragraph>
+                  אנחנו מתחייבים להפוך את היום המיוחד שלכם לבלתי נשכח. עם הכישרון והתשוקה יוצאי הדופן שלנו למוזיקה, אנחנו מבטיחים לכם חוויה מוזיקלית מושלמת שתישאר איתכם לתמיד.
+                </Typography>
+              </StoryCard>
+            </Grid>
+          </Grid>
+
+          <Box sx={{ textAlign: 'center', mt: 6 }}>
+            <Button
+              component={Link}
+              to="/contact"
+              variant="contained"
+              size="large"
+              sx={{
+                bgcolor: 'white',
+                color: 'primary.main',
+                '&:hover': {
+                  bgcolor: 'rgba(255,255,255,0.9)'
+                }
+              }}
+            >
+              קבע שיעור ניסיון חינם
+            </Button>
+          </Box>
+        </Container>
+      </StorySection>
 
       <Section>
         <Container maxWidth="lg">
@@ -133,33 +224,33 @@ const About = () => {
 
 const approaches = [
   {
-    title: 'מסורת ספרדית',
-    description: 'שימור והעברת המסורת הספרדית העתיקה של הפיוט והחזנות, עם דגש על הסגנון הירושלמי המקורי.'
+    title: 'מוזיקה מסורתית ומודרנית',
+    description: 'שילוב מושלם בין מוזיקה יהודית מסורתית לבין להיטים עכשוויים, המתאים לכל קהל ולכל אירוע.'
   },
   {
-    title: 'חדשנות מוזיקלית',
-    description: 'שילוב אלמנטים מודרניים ועיבודים חדשניים, תוך שמירה על רוח המסורת והמקוריות.'
+    title: 'צוות מקצועי ומיומן',
+    description: 'דביר מלווה בצוות נגנים מקצועי ומנוסה, היוצר יחד איתו הרמוניה מושלמת וחוויה מוזיקלית עשירה.'
   },
   {
     title: 'התאמה אישית',
-    description: 'התאמת הרפרטואר והסגנון לאופי האירוע והקהל, יצירת חוויה מוזיקלית מותאמת ומרגשת.'
+    description: 'התאמת הרפרטואר המוזיקלי לטעם האישי שלכם ולאופי האירוע, תוך שמירה על האווירה המושלמת.'
   }
 ];
 
 const forWho = [
-  'לאנשים שחשוב להם שהאורחים יהיו מרותקים ונרגשים לאורך כל האירוע',
-  'לאנשים שמבינים שאירוע בלי פייטן זה כמו חתונה בלי רב',
-  'לאנשים שרוצים ליצור חוויה בלתי נשכחת עבור האורחים שלהם',
-  'לאנשים שמחפשים שילוב מושלם בין מסורת לחדשנות',
-  'לאנשים שרוצים שהאירוע שלהם יהיה מקצועי ומרגש מהרגע הראשון ועד האחרון'
+  'לאנשים שמחפשים חוויה מוזיקלית בלתי נשכחת באירוע שלהם',
+  'למי שרוצה שילוב מושלם של מסורת ומודרניות באירוע',
+  'לחובבי מוזיקה איכותית וביצועים חיים מרגשים',
+  'למי שמעוניין ביצירת אווירה שמחה ומרוממת באירוע',
+  'לאנשים שמחפשים מקצוענות ואמינות בכל היבט של האירוע'
 ];
 
 const notForWho = [
-  'לאנשים שרואים באירוע רק משהו שצריך לסמן עליו V',
-  'לאנשים שרוצים "אירוע פשוט ורגיל"',
-  'לאנשים שלא מתכוונים להזמין יותר מ-10 אנשים לאירוע',
-  'לאנשים שלא רואים חשיבות ביצירת חוויה עבור האורחים',
-  'לאנשים שמחפשים את האופציה הזולה ביותר'
+  'למי שמעדיף מוזיקה מוקלטת בלבד',
+  'לאירועים קטנים מאוד (פחות מ-50 אנשים)',
+  'למי שמחפש פתרון מוזיקלי בסיסי בלבד',
+  'לאירועים שאינם מעוניינים בהופעה חיה',
+  'למי שאין לו עניין בחוויה מוזיקלית מקצועית'
 ];
 
 export default About; 

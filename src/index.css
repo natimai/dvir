@@ -226,6 +226,10 @@ body {
     text-align: center;
     padding: 12px;
   }
+
+  .mobile-nav {
+    display: none;
+  }
 }
 
 /* Accessibility Improvements */

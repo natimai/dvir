@@ -18,6 +18,9 @@ import {
 import { motion } from 'framer-motion';
 import styled from '@emotion/styled';
 import DOMPurify from 'dompurify';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 const StyledPaper = styled(Paper)`
   padding: 32px;
@@ -31,6 +34,82 @@ const ContactInfo = styled.div`
   padding: 32px;
   border-radius: 8px;
   height: 100%;
+`;
+
+const ContactSection = styled.section`
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+  position: relative;
+  overflow: hidden;
+`;
+
+const GlowingOrb = styled(motion.div)`
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.2) 0%, transparent 70%);
+  filter: blur(40px);
+`;
+
+const ContentWrapper = styled(motion.div)`
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 48px;
+  text-align: center;
+  color: white;
+  max-width: 600px;
+  width: 90%;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+`;
+
+const WhatsAppButton = styled(Button)`
+  background: #25D366;
+  color: white;
+  padding: 16px 32px;
+  font-size: 1.2rem;
+  border-radius: 50px;
+  margin-top: 32px;
+  text-transform: none;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: #128C7E;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .MuiSvgIcon-root {
+    font-size: 1.5rem;
+    margin-left: 8px;
+  }
+`;
+
+const InfoItem = styled(Box)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 16px 0;
+  color: rgba(255, 255, 255, 0.9);
+
+  .MuiSvgIcon-root {
+    margin-left: 8px;
+    opacity: 0.8;
+  }
+`;
+
+const FloatingEmoji = styled(motion.span)`
+  position: absolute;
+  font-size: 2rem;
+  user-select: none;
+  pointer-events: none;
 `;
 
 interface FormData {
@@ -116,189 +195,107 @@ const Contact = () => {
     }
   };
 
-  return (
-    <Container maxWidth="lg" sx={{ py: 8 }}>
-      <Grid container spacing={6}>
-        <Grid item xs={12} md={7}>
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <Typography variant="h2" gutterBottom>
-              צור קשר
-            </Typography>
-            <Typography paragraph color="textSecondary">
-              נשמח לשמוע מכם ולהתאים עבורכם את החבילה המושלמת לאירוע שלכם
-            </Typography>
-            
-            <StyledPaper>
-              <form onSubmit={handleSubmit}>
-                <Grid container spacing={3}>
-                  <Grid item xs={12} sm={6}>
-                    <TextField
-                      fullWidth
-                      label="שם מלא"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={6}>
-                    <TextField
-                      fullWidth
-                      label="טלפון"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      required
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <TextField
-                      fullWidth
-                      label="אימייל"
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={6}>
-                    <TextField
-                      fullWidth
-                      label="תאריך האירוע"
-                      name="eventDate"
-                      type="date"
-                      value={formData.eventDate}
-                      onChange={handleChange}
-                      InputLabelProps={{ shrink: true }}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={6}>
-                    <FormControl fullWidth>
-                      <InputLabel>סוג האירוע</InputLabel>
-                      <Select
-                        name="eventType"
-                        value={formData.eventType}
-                        label="סוג האירוע"
-                        onChange={handleChange}
-                      >
-                        <MenuItem value="wedding">חתונה</MenuItem>
-                        <MenuItem value="barMitzva">בר מצווה</MenuItem>
-                        <MenuItem value="batMitzva">בת מצווה</MenuItem>
-                        <MenuItem value="henna">חינה</MenuItem>
-                        <MenuItem value="shabbat">שבת חתן</MenuItem>
-                        <MenuItem value="concert">ערב פיוטים</MenuItem>
-                        <MenuItem value="other">אחר</MenuItem>
-                      </Select>
-                    </FormControl>
-                  </Grid>
-                  <Grid item xs={12}>
-                    <FormControl fullWidth>
-                      <InputLabel>חבילה מועדפת</InputLabel>
-                      <Select
-                        name="package"
-                        value={formData.package}
-                        label="חבילה מועדפת"
-                        onChange={handleChange}
-                      >
-                        <MenuItem value="basic">חבילה בסיסית</MenuItem>
-                        <MenuItem value="extended">חבילה מורחבת</MenuItem>
-                        <MenuItem value="premium">חבילת פרימיום</MenuItem>
-                      </Select>
-                    </FormControl>
-                  </Grid>
-                  <Grid item xs={12}>
-                    <TextField
-                      fullWidth
-                      label="הודעה"
-                      name="message"
-                      multiline
-                      rows={4}
-                      value={formData.message}
-                      onChange={handleChange}
-                      placeholder="ספרו לנו על האירוע שלכם ועל הבקשות המיוחדות שלכם"
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <Button
-                      type="submit"
-                      variant="contained"
-                      color="primary"
-                      size="large"
-                      fullWidth
-                      disabled={isSubmitting}
-                    >
-                      {isSubmitting ? <CircularProgress size={24} /> : 'שליחה'}
-                    </Button>
-                  </Grid>
-                </Grid>
-              </form>
-              
-              {submitStatus && (
-                <Box mt={2}>
-                  <Alert severity={submitStatus}>
-                    {submitStatus === 'success'
-                      ? 'הטופס נשלח בהצלחה! ניצור איתך קשר בהקדם.'
-                      : 'אירעה שגיאה בשליחת הטופס. אנא נסה שוב.'}
-                  </Alert>
-                </Box>
-              )}
-            </StyledPaper>
-          </motion.div>
-        </Grid>
+  const handleWhatsAppClick = () => {
+    const phoneNumber = '972586276261';
+    const message = 'היי דביר, אשמח לשמוע פרטים על שירותי הפייטנות והחזנות';
+    window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
+  };
 
-        <Grid item xs={12} md={5}>
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
+  const emojis = ['🎵', '🎤', '🎼', '✨', '🎹'];
+  
+  return (
+    <ContactSection>
+      {/* אנימציית רקע */}
+      <GlowingOrb
+        initial={{ x: -200, y: -200 }}
+        animate={{ 
+          x: [0, 200, 0], 
+          y: [0, 200, 0],
+          scale: [1, 1.2, 1]
+        }}
+        transition={{ 
+          duration: 20,
+          repeat: Infinity,
+          ease: "linear"
+        }}
+      />
+      
+      {/* אימוג'ים מרחפים */}
+      {emojis.map((emoji, index) => (
+        <FloatingEmoji
+          key={index}
+          initial={{ 
+            x: Math.random() * window.innerWidth,
+            y: Math.random() * window.innerHeight,
+            opacity: 0
+          }}
+          animate={{ 
+            y: [0, -100, 0],
+            opacity: [0, 1, 0],
+            rotate: [0, 360]
+          }}
+          transition={{
+            duration: 5 + Math.random() * 5,
+            repeat: Infinity,
+            delay: index * 2
+          }}
+        >
+          {emoji}
+        </FloatingEmoji>
+      ))}
+
+      <ContentWrapper
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <motion.div
+          initial={{ scale: 0.5 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          <Typography variant="h2" gutterBottom sx={{ 
+            fontWeight: 700,
+            background: 'linear-gradient(45deg, #ffffff 30%, #e0e7ff 90%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent'
+          }}>
+            בואו נדבר
+          </Typography>
+        </motion.div>
+
+        <Typography variant="h5" sx={{ mb: 4, opacity: 0.9 }}>
+          נשמח להפוך את האירוע שלכם לחוויה מוזיקלית בלתי נשכחת
+        </Typography>
+
+        <InfoItem>
+          <AccessTimeIcon />
+          <Typography>
+            ימים א'-ה': 09:00-20:00 | יום ו': 09:00-13:00
+          </Typography>
+        </InfoItem>
+
+        <InfoItem>
+          <LocationOnIcon />
+          <Typography>
+            מופיע בכל רחבי הארץ
+          </Typography>
+        </InfoItem>
+
+        <motion.div
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <WhatsAppButton
+            variant="contained"
+            onClick={handleWhatsAppClick}
+            endIcon={<WhatsAppIcon />}
           >
-            <ContactInfo>
-              <Typography variant="h4" gutterBottom>
-                פרטי התקשרות
-              </Typography>
-              <Box mt={4}>
-                <Typography variant="h6" gutterBottom>
-                  טלפון
-                </Typography>
-                <Typography paragraph>
-                  058-627-6261
-                </Typography>
-                
-                <Typography variant="h6" gutterBottom>
-                  אימייל
-                </Typography>
-                <Typography paragraph>
-                  dvir@example.com
-                </Typography>
-                
-                <Typography variant="h6" gutterBottom>
-                  שעות פעילות
-                </Typography>
-                <Typography paragraph>
-                  ימים א'-ה': 09:00-20:00
-                  <br />
-                  יום ו': 09:00-13:00
-                </Typography>
-                
-                <Typography variant="h6" gutterBottom>
-                  אזורי פעילות
-                </Typography>
-                <Typography>
-                  מופיע בכל רחבי הארץ
-                  <br />
-                  תוספת נסיעות לאזורים מרוחקים
-                </Typography>
-              </Box>
-            </ContactInfo>
-          </motion.div>
-        </Grid>
-      </Grid>
-    </Container>
+            דברו איתי בוואטסאפ
+          </WhatsAppButton>
+        </motion.div>
+      </ContentWrapper>
+    </ContactSection>
   );
 };
 

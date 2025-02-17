@@ -39,9 +39,6 @@ const Layout = () => {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <a href="#main-content" className="skip-link">
-        דלג לתוכן הראשי
-      </a>
       <Navbar />
       <main id="main-content" className="flex-grow relative">
         <Suspense fallback={<PageLoader />}>

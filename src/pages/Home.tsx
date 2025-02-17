@@ -7,30 +7,34 @@ import FloatingEmojis from '../components/FloatingEmojis';
 import { useState } from 'react';
 import { TestimonialsSection } from '../components/TestimonialsSection';
 import CloseIcon from '@mui/icons-material/Close';
+import { Link } from 'react-router-dom';
 
-const HeroSection = styled.section`
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-              url('/images/hero-bg.jpg') center/cover;
-  color: white;
-  padding: 180px 0;
-  text-align: center;
+const HeroSection = styled(motion.section)`
+  min-height: 90vh;
   position: relative;
+  display: flex;
+  align-items: center;
   overflow: hidden;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/gallery/orenk-140 Large.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 
-  &:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at center, rgba(30, 58, 138, 0.3) 0%, transparent 70%);
-    pointer-events: none;
+  @media (max-width: 768px) {
+    background-attachment: scroll;
   }
 `;
 
+const HeroContent = styled(Box)`
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: white;
+  padding: 0 20px;
+`;
+
 const Section = styled.section`
-  padding: 100px 0;
+  padding: 80px 0;
   position: relative;
   
   &:nth-of-type(even) {
@@ -137,6 +141,28 @@ const GradientButton = styled(Button)`
   }
 `;
 
+const ProcessCard = styled(motion.div)`
+  background: white;
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+`;
+
+const ProcessImage = styled.img`
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 16px;
+`;
+
 const Home = () => {
   const [selectedMember, setSelectedMember] = useState<typeof team[0] | null>(null);
 
@@ -150,182 +176,107 @@ const Home = () => {
 
   return (
     <>
-      <HeroSection>
-        <FloatingEmojis />
+      <HeroSection
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
         <Container maxWidth="lg">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-            style={{ position: 'relative', zIndex: 2 }}
-          >
-            <Typography variant="h1" gutterBottom sx={{ 
-              fontSize: { xs: '2.5rem', md: '4rem' }, 
-              fontWeight: 700,
-              textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)'
-            }}>
-              מלווה ילדים במסע הבר מצווה כבר 15 שנה
-            </Typography>
-            <Typography variant="h5" gutterBottom sx={{ 
-              mb: 6, 
-              maxWidth: '800px', 
-              mx: 'auto', 
-              opacity: 0.9,
-              textShadow: '1px 1px 2px rgba(0, 0, 0, 0.3)'
-            }}>
-              מלמד בר מצווה ופייטנות בסגנון ספרדי ירושלמי מסורתי, בשילוב ייחודי של מסורת עתיקה עם נגיעות מודרניות
-            </Typography>
-            <GradientButton
-              variant="contained"
-              size="large"
-              href="/contact"
-              startIcon={<PlayArrowIcon />}
+          <HeroContent>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.8 }}
             >
-              הזמן הופעה
-            </GradientButton>
-          </motion.div>
+              <Typography 
+                variant="h1" 
+                sx={{ 
+                  fontSize: { xs: '2.5rem', md: '4.5rem' },
+                  fontWeight: 700,
+                  marginBottom: 2,
+                  textShadow: '2px 2px 4px rgba(0,0,0,0.3)'
+                }}
+              >
+                דביר דלויה
+              </Typography>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.8 }}
+            >
+              <Typography 
+                variant="h2" 
+                sx={{ 
+                  fontSize: { xs: '1.5rem', md: '2.5rem' },
+                  fontWeight: 500,
+                  marginBottom: 4,
+                  textShadow: '2px 2px 4px rgba(0,0,0,0.3)'
+                }}
+              >
+                פייטן וחזן מקצועי לאירועים מיוחדים
+              </Typography>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 0.8 }}
+            >
+              <Button
+                component={Link}
+                to="/contact"
+                variant="contained"
+                size="large"
+                sx={{
+                  fontSize: { xs: '1.1rem', md: '1.3rem' },
+                  padding: '12px 40px',
+                  borderRadius: '50px',
+                  backgroundColor: 'white',
+                  color: 'primary.main',
+                  '&:hover': {
+                    backgroundColor: 'rgba(255,255,255,0.9)',
+                    transform: 'scale(1.05)'
+                  },
+                  transition: 'all 0.3s ease'
+                }}
+              >
+                בואו נדבר
+              </Button>
+            </motion.div>
+          </HeroContent>
         </Container>
       </HeroSection>
 
       <Section>
         <Container maxWidth="lg">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <Typography variant="h2" align="center" gutterBottom sx={{ mb: 6 }}>
-              למה לבחור בנו?
-            </Typography>
-            <Grid container spacing={4}>
-              {benefits.map((benefit, index) => (
-                <Grid item xs={12} md={4} key={index}>
-                  <Card
-                    whileHover={{ y: -10 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                  >
-                    <FloatingIcon
-                      initial={{ rotate: 0 }}
-                      animate={{ rotate: 360 }}
-                      transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                    >
-                      <MusicNoteIcon />
-                    </FloatingIcon>
-                    <Box sx={{ position: 'relative', zIndex: 1 }}>
-                      <Typography variant="h5" gutterBottom color="primary" sx={{ fontWeight: 600 }}>
-                        {benefit.title}
-                      </Typography>
-                      <Typography>
-                        {benefit.description}
-                      </Typography>
-                    </Box>
-                  </Card>
-                </Grid>
-              ))}
-            </Grid>
-          </motion.div>
-        </Container>
-      </Section>
-
-      <Section>
-        <Container maxWidth="lg">
-          <Typography variant="h2" align="center" gutterBottom sx={{ mb: 6 }}>
-            הצוות שלנו
+          <Typography variant="h2" align="center" gutterBottom>
+            איך זה עובד?
           </Typography>
+          <Typography variant="h5" align="center" color="textSecondary" paragraph sx={{ mb: 6 }}>
+            תהליך פשוט בארבעה שלבים
+          </Typography>
+
           <Grid container spacing={4}>
-            {team.map((member, index) => (
+            {process.map((step, index) => (
               <Grid item xs={12} sm={6} md={3} key={index}>
-                <TeamCard
+                <ProcessCard
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.2 }}
                   viewport={{ once: true }}
-                  onClick={() => handleOpenDialog(member)}
-                  style={{ cursor: 'pointer' }}
                 >
-                  <TeamMemberImage src={member.image} alt={member.name} />
-                  <TeamMemberInfo>
-                    <Typography variant="h5" gutterBottom sx={{ fontWeight: 600 }}>
-                      {member.name}
-                    </Typography>
-                    <Typography color="primary" gutterBottom>
-                      {member.role}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      {member.description}
-                    </Typography>
-                  </TeamMemberInfo>
-                </TeamCard>
+                  <ProcessImage src={step.image} alt={step.title} />
+                  <Typography variant="h5" gutterBottom color="primary">
+                    {step.title}
+                  </Typography>
+                  <Typography>
+                    {step.description}
+                  </Typography>
+                </ProcessCard>
               </Grid>
             ))}
-          </Grid>
-        </Container>
-      </Section>
-
-      <Section>
-        <Container maxWidth="lg">
-          <Typography variant="h2" align="center" gutterBottom sx={{ mb: 6 }}>
-            איך זה עובד?
-          </Typography>
-          <Grid container spacing={4} alignItems="center">
-            <Grid item xs={12} md={6}>
-              <Box>
-                {process.map((step, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.2 }}
-                    viewport={{ once: true }}
-                  >
-                    <Box sx={{ mb: 4, display: 'flex', gap: 2 }}>
-                      <Box sx={{
-                        width: 40,
-                        height: 40,
-                        borderRadius: '50%',
-                        background: 'linear-gradient(45deg, #1e3a8a, #3b82f6)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        color: 'white',
-                        flexShrink: 0
-                      }}>
-                        {index + 1}
-                      </Box>
-                      <Box>
-                        <Typography variant="h5" gutterBottom sx={{ fontWeight: 600 }}>
-                          {step.title}
-                        </Typography>
-                        <Typography paragraph>
-                          {step.description}
-                        </Typography>
-                      </Box>
-                    </Box>
-                  </motion.div>
-                ))}
-              </Box>
-            </Grid>
-            <Grid item xs={12} md={6}>
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-                style={{ backgroundColor: '#f8fafc' }}
-              >
-                <Box
-                  component="img"
-                  src="/images/about-image.jpg"
-                  alt="דביר דלויה מופיע"
-                  sx={{
-                    width: '100%',
-                    borderRadius: '20px',
-                    boxShadow: '0 20px 40px rgba(0, 0, 0, 0.1)',
-                  }}
-                />
-              </motion.div>
-            </Grid>
           </Grid>
         </Container>
       </Section>
@@ -461,15 +412,23 @@ const team = [
 const process = [
   {
     title: 'פגישת היכרות',
-    description: 'נפגש לשיחת היכרות כדי להבין את הצרכים והרצונות שלכם, ולהתאים את התוכנית המושלמת לאירוע.'
+    description: 'נפגש לשיחת היכרות כדי להבין את הצרכים והרצונות שלכם',
+    image: '/gallery/orenk-134 Large.jpeg'
   },
   {
     title: 'בחירת רפרטואר',
-    description: 'יחד נבחר את הפיוטים והשירים שילוו את האירוע, משילוב של מסורת ספרדית עתיקה עם נגיעות מודרניות.'
+    description: 'נבחר יחד את הפיוטים והשירים שילוו את האירוע',
+    image: '/gallery/orenk-97 Large.jpeg'
   },
   {
-    title: 'הכנה מושלמת',
-    description: 'נדאג לכל הפרטים הטכניים, כולל הגברה מקצועית וליווי מוזיקלי, כדי שתוכלו להתרכז רק בשמחה.'
+    title: 'חזרות והכנה',
+    description: 'נקיים חזרות והכנות מקדימות לקראת האירוע',
+    image: '/gallery/orenk-85 Large.jpeg'
+  },
+  {
+    title: 'ביצוע מושלם',
+    description: 'נדאג לכל הפרטים כדי שתוכלו להתרכז רק בשמחה',
+    image: '/gallery/orenk-78 Large.jpeg'
   }
 ];
 
