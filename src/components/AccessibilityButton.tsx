@@ -11,13 +11,24 @@ import {
   Slider,
   Switch,
   Tooltip,
-  Zoom
+  Zoom,
+  Divider
 } from '@mui/material';
 import styled from '@emotion/styled';
 import AccessibilityNewIcon from '@mui/icons-material/AccessibilityNew';
 import TextFieldsIcon from '@mui/icons-material/TextFields';
 import ContrastIcon from '@mui/icons-material/Contrast';
 import AnimationIcon from '@mui/icons-material/Animation';
+import FormatLineSpacingIcon from '@mui/icons-material/FormatLineSpacing';
+import TextFormatIcon from '@mui/icons-material/TextFormat';
+import FontDownloadIcon from '@mui/icons-material/FontDownload';
+import ImageIcon from '@mui/icons-material/Image';
+import PauseCircleOutlineIcon from '@mui/icons-material/PauseCircleOutline';
+import MonochromePhotosIcon from '@mui/icons-material/MonochromePhotos';
+import MouseIcon from '@mui/icons-material/Mouse';
+import CenterFocusStrongIcon from '@mui/icons-material/CenterFocusStrong';
+import LinkIcon from '@mui/icons-material/Link';
+import TitleIcon from '@mui/icons-material/Title';
 import { Link } from 'react-router-dom';
 
 const AccessibilityFab = styled(IconButton)`
@@ -72,6 +83,16 @@ export const AccessibilityButton = () => {
   const [fontSize, setFontSize] = useState<number>(100);
   const [highContrast, setHighContrast] = useState<boolean>(false);
   const [reduceMotion, setReduceMotion] = useState<boolean>(false);
+  const [highlightLinks, setHighlightLinks] = useState<boolean>(false);
+  const [highlightTitles, setHighlightTitles] = useState<boolean>(false);
+  const [lineSpacing, setLineSpacing] = useState<number>(1.5);
+  const [letterSpacing, setLetterSpacing] = useState<number>(0);
+  const [readableFont, setReadableFont] = useState<boolean>(false);
+  const [showImageDescriptions, setShowImageDescriptions] = useState<boolean>(false);
+  const [stopAnimations, setStopAnimations] = useState<boolean>(false);
+  const [monochrome, setMonochrome] = useState<boolean>(false);
+  const [biggerCursor, setBiggerCursor] = useState<boolean>(false);
+  const [focusHighlight, setFocusHighlight] = useState<boolean>(false);
 
   const handleClick = (_event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(_event.currentTarget);
@@ -102,6 +123,90 @@ export const AccessibilityButton = () => {
       document.body.classList.add('reduce-motion');
     } else {
       document.body.classList.remove('reduce-motion');
+    }
+  };
+
+  const handleHighlightLinksChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setHighlightLinks(event.target.checked);
+    if (event.target.checked) {
+      document.body.classList.add('highlight-links');
+    } else {
+      document.body.classList.remove('highlight-links');
+    }
+  };
+
+  const handleHighlightTitlesChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setHighlightTitles(event.target.checked);
+    if (event.target.checked) {
+      document.body.classList.add('highlight-titles');
+    } else {
+      document.body.classList.remove('highlight-titles');
+    }
+  };
+
+  const handleLineSpacingChange = (_event: Event, newValue: number | number[]) => {
+    const spacing = newValue as number;
+    setLineSpacing(spacing);
+    document.body.style.lineHeight = `${spacing}`;
+  };
+
+  const handleLetterSpacingChange = (_event: Event, newValue: number | number[]) => {
+    const spacing = newValue as number;
+    setLetterSpacing(spacing);
+    document.body.style.letterSpacing = `${spacing}px`;
+  };
+
+  const handleReadableFontChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setReadableFont(event.target.checked);
+    if (event.target.checked) {
+      document.body.classList.add('readable-font');
+    } else {
+      document.body.classList.remove('readable-font');
+    }
+  };
+
+  const handleImageDescriptionsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setShowImageDescriptions(event.target.checked);
+    if (event.target.checked) {
+      document.body.classList.add('show-image-descriptions');
+    } else {
+      document.body.classList.remove('show-image-descriptions');
+    }
+  };
+
+  const handleStopAnimationsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setStopAnimations(event.target.checked);
+    if (event.target.checked) {
+      document.body.classList.add('stop-animations');
+    } else {
+      document.body.classList.remove('stop-animations');
+    }
+  };
+
+  const handleMonochromeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setMonochrome(event.target.checked);
+    if (event.target.checked) {
+      document.body.classList.add('monochrome');
+    } else {
+      document.body.classList.remove('monochrome');
+    }
+  };
+
+  const handleBiggerCursorChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setBiggerCursor(event.target.checked);
+    if (event.target.checked) {
+      document.body.classList.add('bigger-cursor');
+    } else {
+      document.body.classList.remove('bigger-cursor');
+    }
+  };
+
+  const handleFocusHighlightChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setFocusHighlight(event.target.checked);
+    if (event.target.checked) {
+      document.body.classList.add('focus-highlight');
+    } else {
+      document.body.classList.remove('focus-highlight');
     }
   };
 
@@ -164,6 +269,105 @@ export const AccessibilityButton = () => {
               />
             </ListItem>
 
+            <Divider />
+
+            <ListItem>
+              <ListItemIcon>
+                <LinkIcon />
+              </ListItemIcon>
+              <ListItemText 
+                primary="הדגשת קישורים"
+                secondary="הדגשת כל הקישורים באתר"
+              />
+              <Switch
+                edge="end"
+                checked={highlightLinks}
+                onChange={handleHighlightLinksChange}
+                inputProps={{
+                  'aria-label': 'הפעל הדגשת קישורים'
+                }}
+              />
+            </ListItem>
+
+            <ListItem>
+              <ListItemIcon>
+                <TitleIcon />
+              </ListItemIcon>
+              <ListItemText 
+                primary="הדגשת כותרות"
+                secondary="הדגשת כל הכותרות באתר"
+              />
+              <Switch
+                edge="end"
+                checked={highlightTitles}
+                onChange={handleHighlightTitlesChange}
+                inputProps={{
+                  'aria-label': 'הפעל הדגשת כותרות'
+                }}
+              />
+            </ListItem>
+
+            <ListItem>
+              <ListItemIcon>
+                <FormatLineSpacingIcon />
+              </ListItemIcon>
+              <ListItemText 
+                primary="מרווח בין שורות"
+                secondary={
+                  <Slider
+                    value={lineSpacing}
+                    onChange={handleLineSpacingChange}
+                    min={1}
+                    max={3}
+                    step={0.1}
+                    aria-label="מרווח בין שורות"
+                    valueLabelDisplay="auto"
+                  />
+                }
+              />
+            </ListItem>
+
+            <ListItem>
+              <ListItemIcon>
+                <TextFormatIcon />
+              </ListItemIcon>
+              <ListItemText 
+                primary="מרווח בין אותיות"
+                secondary={
+                  <Slider
+                    value={letterSpacing}
+                    onChange={handleLetterSpacingChange}
+                    min={0}
+                    max={5}
+                    step={0.5}
+                    aria-label="מרווח בין אותיות"
+                    valueLabelDisplay="auto"
+                    valueLabelFormat={value => `${value}px`}
+                  />
+                }
+              />
+            </ListItem>
+
+            <ListItem>
+              <ListItemIcon>
+                <FontDownloadIcon />
+              </ListItemIcon>
+              <ListItemText 
+                primary="גופן קריא"
+                secondary="שימוש בגופן נגיש יותר"
+              />
+              <Switch
+                edge="end"
+                checked={readableFont}
+                onChange={handleReadableFontChange}
+                inputProps={{
+                  'aria-label': 'הפעל גופן קריא'
+                }}
+              />
+            </ListItem>
+
+            <Divider />
+
             <ListItem>
               <ListItemIcon>
                 <ContrastIcon />
@@ -184,6 +388,44 @@ export const AccessibilityButton = () => {
 
             <ListItem>
               <ListItemIcon>
+                <MonochromePhotosIcon />
+              </ListItemIcon>
+              <ListItemText 
+                primary="מצב מונוכרום"
+                secondary="המרת כל הצבעים לשחור-לבן"
+              />
+              <Switch
+                edge="end"
+                checked={monochrome}
+                onChange={handleMonochromeChange}
+                inputProps={{
+                  'aria-label': 'הפעל מצב מונוכרום'
+                }}
+              />
+            </ListItem>
+
+            <Divider />
+
+            <ListItem>
+              <ListItemIcon>
+                <ImageIcon />
+              </ListItemIcon>
+              <ListItemText 
+                primary="תיאורי תמונות"
+                secondary="הצגת תיאורים לתמונות"
+              />
+              <Switch
+                edge="end"
+                checked={showImageDescriptions}
+                onChange={handleImageDescriptionsChange}
+                inputProps={{
+                  'aria-label': 'הפעל תיאורי תמונות'
+                }}
+              />
+            </ListItem>
+
+            <ListItem>
+              <ListItemIcon>
                 <AnimationIcon />
               </ListItemIcon>
               <ListItemText 
@@ -196,6 +438,62 @@ export const AccessibilityButton = () => {
                 onChange={handleMotionChange}
                 inputProps={{
                   'aria-label': 'הפעל מצב הפחתת אנימציות'
+                }}
+              />
+            </ListItem>
+
+            <ListItem>
+              <ListItemIcon>
+                <PauseCircleOutlineIcon />
+              </ListItemIcon>
+              <ListItemText 
+                primary="עצירת תנועה"
+                secondary="עצירת כל האלמנטים הנעים"
+              />
+              <Switch
+                edge="end"
+                checked={stopAnimations}
+                onChange={handleStopAnimationsChange}
+                inputProps={{
+                  'aria-label': 'עצור תנועה'
+                }}
+              />
+            </ListItem>
+
+            <Divider />
+
+            <ListItem>
+              <ListItemIcon>
+                <MouseIcon />
+              </ListItemIcon>
+              <ListItemText 
+                primary="סמן מוגדל"
+                secondary="הגדלת סמן העכבר"
+              />
+              <Switch
+                edge="end"
+                checked={biggerCursor}
+                onChange={handleBiggerCursorChange}
+                inputProps={{
+                  'aria-label': 'הפעל סמן מוגדל'
+                }}
+              />
+            </ListItem>
+
+            <ListItem>
+              <ListItemIcon>
+                <CenterFocusStrongIcon />
+              </ListItemIcon>
+              <ListItemText 
+                primary="הדגשת מיקוד"
+                secondary="הדגשת האלמנט הנבחר"
+              />
+              <Switch
+                edge="end"
+                checked={focusHighlight}
+                onChange={handleFocusHighlightChange}
+                inputProps={{
+                  'aria-label': 'הפעל הדגשת מיקוד'
                 }}
               />
             </ListItem>

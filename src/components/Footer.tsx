@@ -1,217 +1,190 @@
-import { Container, Grid, Typography, Box } from '@mui/material';
+import { Container, Typography, Grid, Box, Divider } from '@mui/material';
 import { Link } from 'react-router-dom';
 import styled from '@emotion/styled';
+import PhoneIcon from '@mui/icons-material/Phone';
+import EmailIcon from '@mui/icons-material/Email';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import YouTubeIcon from '@mui/icons-material/YouTube';
-import PhoneIcon from '@mui/icons-material/Phone';
-import EmailIcon from '@mui/icons-material/Email';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
 
-const FooterContainer = styled.footer`
-  background-color: #1e3a8a;
+const FooterWrapper = styled('footer')`
+  background: linear-gradient(165deg, #1e3a8a 0%, #3b82f6 100%);
   color: white;
-  padding: 48px 0;
-  margin-top: auto;
+  padding: 80px 0 40px;
+  position: relative;
+  overflow: hidden;
 
-  @media (prefers-reduced-motion: reduce) {
-    * {
-      animation: none !important;
-      transition: none !important;
-    }
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #3b82f6, #1e3a8a, #3b82f6);
   }
 `;
 
-const FooterLink = styled(Link)`
-  color: white;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  margin-bottom: 12px;
-  padding: 8px;
-  border-radius: 4px;
-  transition: all 0.2s ease;
-  
-  &:hover, &:focus {
-    text-decoration: underline;
-    background: rgba(255, 255, 255, 0.1);
-    outline: none;
-  }
+const FooterSection = styled(Box)`
+  margin-bottom: 32px;
+`;
 
-  &:focus-visible {
-    box-shadow: 0 0 0 2px white;
+const FooterLink = styled(Link)`
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+
+  &:hover {
+    color: white;
+    transform: translateX(-4px);
+  }
+`;
+
+const ContactItem = styled('div')`
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  color: rgba(255, 255, 255, 0.8);
+
+  svg {
+    margin-left: 8px;
+    font-size: 20px;
+    color: #60a5fa;
   }
 `;
 
 const SocialButton = styled('a')`
-  color: white;
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  margin: 0 8px;
-  padding: 12px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  margin: 0 8px;
   transition: all 0.3s ease;
-  cursor: pointer;
-  text-decoration: none;
-  position: relative;
-
-  &:hover, &:focus {
-    background: rgba(255, 255, 255, 0.1);
-    transform: translateY(-5px);
-  }
-
-  &:focus-visible {
-    outline: none;
-    box-shadow: 0 0 0 2px white;
-  }
-
-  svg {
-    font-size: 24px;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    transition: none;
-    &:hover, &:focus {
-      transform: none;
-    }
-  }
-`;
-
-const ContactItem = styled('a')`
-  display: flex;
-  align-items: center;
-  margin-bottom: 12px;
-  gap: 8px;
   color: white;
-  text-decoration: none;
-  padding: 4px;
-  border-radius: 4px;
-  transition: all 0.2s ease;
 
-  &:hover, &:focus {
-    background: rgba(255, 255, 255, 0.1);
-    outline: none;
-  }
-
-  &:focus-visible {
-    box-shadow: 0 0 0 2px white;
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px);
   }
 
   svg {
     font-size: 20px;
-    opacity: 0.8;
   }
 `;
 
-const SkipLink = styled('a')`
-  position: absolute;
-  top: -40px;
-  left: 0;
-  background: #1e3a8a;
-  color: white;
-  padding: 8px;
-  z-index: 100;
-  transition: top 0.3s;
-
-  &:focus {
-    top: 0;
-  }
+const LegalSection = styled(Box)`
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
 `;
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+  
   return (
-    <FooterContainer role="contentinfo" aria-label="פוטר האתר">
-      <SkipLink href="#main-content">
-        דלג לתוכן הראשי
-      </SkipLink>
-      
+    <FooterWrapper>
       <Container maxWidth="lg">
         <Grid container spacing={4}>
-          <Grid item xs={12} sm={4}>
-            <Typography variant="h6" component="h2" gutterBottom>
-              צור קשר
-            </Typography>
-            
-            <ContactItem href="tel:+972586276261" aria-label="התקשר אלינו">
-              <PhoneIcon aria-hidden="true" />
-              <Typography variant="body2">
-                טלפון: 058-627-6261
+          {/* מידע על החברה */}
+          <Grid item xs={12} md={4}>
+            <FooterSection>
+              <Typography variant="h6" gutterBottom sx={{ color: 'white', fontWeight: 600 }}>
+                דביר דלויה
               </Typography>
-            </ContactItem>
-            
-            <ContactItem href="mailto:dvir@example.com" aria-label="שלח לנו אימייל">
-              <EmailIcon aria-hidden="true" />
-              <Typography variant="body2">
-                אימייל: dvir@example.com
+              <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.8)', mb: 2 }}>
+                פייטן וחזן מקצועי לאירועים מיוחדים
               </Typography>
-            </ContactItem>
-          </Grid>
-          
-          <Grid item xs={12} sm={4}>
-            <Typography variant="h6" component="h2" gutterBottom>
-              ניווט מהיר
-            </Typography>
-            <nav aria-label="ניווט מהיר">
-              <Box component="ul" sx={{ listStyle: 'none', p: 0 }}>
-                <li>
-                  <FooterLink to="/about">
-                    אודות
-                  </FooterLink>
-                </li>
-                <li>
-                  <FooterLink to="/services">
-                    שירותים
-                  </FooterLink>
-                </li>
-                <li>
-                  <FooterLink to="/faq">
-                    שאלות נפוצות
-                  </FooterLink>
-                </li>
-                <li>
-                  <FooterLink to="/contact">
-                    צור קשר
-                  </FooterLink>
-                </li>
-                <li>
-                  <FooterLink to="/accessibility">
-                    הצהרת נגישות
-                  </FooterLink>
-                </li>
-              </Box>
-            </nav>
-          </Grid>
-          
-          <Grid item xs={12} sm={4}>
-            <Typography variant="h6" component="h2" gutterBottom>
-              שעות פעילות
-            </Typography>
-            <ContactItem>
-              <AccessTimeIcon aria-hidden="true" />
-              <Box>
+              <ContactItem>
+                <LocationOnIcon />
+                <Box>
+                  <Typography variant="body2">
+                    באר שבע והסביבה
+                  </Typography>
+                  <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.6)' }}>
+                    שירות ניתן בכל רחבי הארץ
+                  </Typography>
+                </Box>
+              </ContactItem>
+              <ContactItem>
+                <PhoneIcon />
                 <Typography variant="body2">
-                  ימים א'-ה': 09:00-20:00
+                  058-627-6261
                 </Typography>
+              </ContactItem>
+              <ContactItem>
+                <EmailIcon />
                 <Typography variant="body2">
-                  יום ו': 09:00-13:00
+                  dvir@example.com
                 </Typography>
-              </Box>
-            </ContactItem>
+              </ContactItem>
+              <ContactItem>
+                <AccessTimeIcon />
+                <Box>
+                  <Typography variant="body2">
+                    ימים א'-ה': 09:00-20:00
+                  </Typography>
+                  <Typography variant="body2">
+                    יום ו': 09:00-13:00
+                  </Typography>
+                </Box>
+              </ContactItem>
+            </FooterSection>
+          </Grid>
+
+          {/* קישורים מהירים */}
+          <Grid item xs={12} sm={6} md={4}>
+            <FooterSection>
+              <Typography variant="h6" gutterBottom sx={{ color: 'white', fontWeight: 600 }}>
+                ניווט מהיר
+              </Typography>
+              <FooterLink to="/about">אודות</FooterLink>
+              <FooterLink to="/services">שירותים</FooterLink>
+              <FooterLink to="/gallery">גלריה</FooterLink>
+              <FooterLink to="/faq">שאלות נפוצות</FooterLink>
+              <FooterLink to="/contact">צור קשר</FooterLink>
+            </FooterSection>
+          </Grid>
+
+          {/* מידע משפטי */}
+          <Grid item xs={12} sm={6} md={4}>
+            <FooterSection>
+              <Typography variant="h6" gutterBottom sx={{ color: 'white', fontWeight: 600 }}>
+                מידע משפטי
+              </Typography>
+              <FooterLink to="/terms">תנאי שימוש</FooterLink>
+              <FooterLink to="/privacy">מדיניות פרטיות</FooterLink>
+              <FooterLink to="/accessibility">הצהרת נגישות</FooterLink>
+              <FooterLink to="/cookies">מדיניות עוגיות</FooterLink>
+              <FooterLink to="/refund-policy">מדיניות ביטולים והחזרים</FooterLink>
+            </FooterSection>
           </Grid>
         </Grid>
 
-        <Box sx={{ mt: 6, mb: 4, textAlign: 'center' }}>
-          <nav aria-label="רשתות חברתיות">
+        {/* רשתות חברתיות */}
+        <Box sx={{ textAlign: 'center', mt: 4 }}>
+          <Typography variant="h6" gutterBottom sx={{ color: 'white', fontWeight: 600 }}>
+            עקבו אחרינו
+          </Typography>
+          <Box sx={{ mt: 2 }}>
             <SocialButton 
               href="#" 
               target="_blank" 
               rel="noopener noreferrer"
               aria-label="עקבו אחרינו בפייסבוק"
             >
-              <FacebookIcon aria-hidden="true" />
+              <FacebookIcon />
             </SocialButton>
             <SocialButton 
               href="#" 
@@ -219,7 +192,7 @@ const Footer = () => {
               rel="noopener noreferrer"
               aria-label="עקבו אחרינו באינסטגרם"
             >
-              <InstagramIcon aria-hidden="true" />
+              <InstagramIcon />
             </SocialButton>
             <SocialButton 
               href="#" 
@@ -227,7 +200,7 @@ const Footer = () => {
               rel="noopener noreferrer"
               aria-label="צרו איתנו קשר בוואטסאפ"
             >
-              <WhatsAppIcon aria-hidden="true" />
+              <WhatsAppIcon />
             </SocialButton>
             <SocialButton 
               href="#" 
@@ -235,24 +208,23 @@ const Footer = () => {
               rel="noopener noreferrer"
               aria-label="הצטרפו לערוץ היוטיוב שלנו"
             >
-              <YouTubeIcon aria-hidden="true" />
+              <YouTubeIcon />
             </SocialButton>
-          </nav>
+          </Box>
         </Box>
 
-        <Box sx={{ textAlign: 'center' }}>
-          <Typography variant="body2" component="p" sx={{ mb: 1 }}>
-            © {new Date().getFullYear()} דביר דלויה. כל הזכויות שמורות.
+        {/* מידע משפטי בתחתית */}
+        <LegalSection>
+          <Typography variant="body2" paragraph>
+            © {currentYear} דביר דלויה. כל הזכויות שמורות.
           </Typography>
-          <Typography variant="body2" component="p" sx={{ 
-            color: 'rgba(255, 255, 255, 0.8)',
-            fontStyle: 'italic'
-          }}>
-            השירות ניתן על ידי עמותת למען באר שבע והנגב
+          <Typography variant="body2">
+            האתר נבנה על ידי נתנאל מימון | 
+            <Link to="/sitemap" style={{ color: 'inherit', marginRight: '4px' }}>מפת אתר</Link>
           </Typography>
-        </Box>
+        </LegalSection>
       </Container>
-    </FooterContainer>
+    </FooterWrapper>
   );
 };
 

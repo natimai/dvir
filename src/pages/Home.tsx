@@ -1,4 +1,4 @@
-import { Container, Typography, Button, Box, Grid, Dialog, DialogContent, DialogTitle, IconButton } from '@mui/material';
+import { Container, Typography, Button, Box, Grid, Dialog, DialogContent, DialogTitle, IconButton, Paper, Theme } from '@mui/material';
 import { motion } from 'framer-motion';
 import styled from '@emotion/styled';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
@@ -8,6 +8,7 @@ import { useState } from 'react';
 import { TestimonialsSection } from '../components/TestimonialsSection';
 import CloseIcon from '@mui/icons-material/Close';
 import { Link } from 'react-router-dom';
+import { styled as muiStyled } from '@mui/material/styles';
 
 const HeroSection = styled(motion.section)`
   min-height: 90vh;
@@ -33,14 +34,13 @@ const HeroContent = styled(Box)`
   padding: 0 20px;
 `;
 
-const Section = styled.section`
-  padding: 80px 0;
-  position: relative;
-  
-  &:nth-of-type(even) {
-    background-color: #f8fafc;
+const Section = styled('section')<{ theme?: Theme }>(({ theme }) => ({
+  padding: '80px 0',
+  position: 'relative',
+  '&.light-bg': {
+    backgroundColor: '#f8fafc'
   }
-`;
+}));
 
 const Card = styled(motion.div)`
   background: white;
@@ -163,6 +163,47 @@ const ProcessImage = styled.img`
   margin-bottom: 16px;
 `;
 
+const ContentImage = styled('img')<{ theme?: Theme }>(({ theme }) => ({
+  width: '100%',
+  height: '100%',
+  objectFit: 'cover',
+  borderRadius: '16px'
+}));
+
+const QuestionCard = styled(Paper)<{ theme?: Theme }>(({ theme }) => ({
+  padding: '32px',
+  height: '100%',
+  transition: 'transform 0.3s ease',
+  borderRadius: '16px',
+  '&:hover': {
+    transform: 'translateY(-5px)'
+  }
+}));
+
+interface ProcessStep {
+  title: string;
+  description: string;
+  image: string;
+  imageAlt: string;
+}
+
+interface TeamMember {
+  name: string;
+  role: string;
+  description: string;
+  image: string;
+  imageAlt: string;
+  fullDescription: string;
+  expertise?: string;
+  education?: string;
+  experience?: string;
+}
+
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
 const Home = () => {
   const [selectedMember, setSelectedMember] = useState<typeof team[0] | null>(null);
 
@@ -267,7 +308,7 @@ const Home = () => {
                   transition={{ delay: index * 0.2 }}
                   viewport={{ once: true }}
                 >
-                  <ProcessImage src={step.image} alt={step.title} />
+                  <ProcessImage src={step.image} alt={step.imageAlt} />
                   <Typography variant="h5" gutterBottom color="primary">
                     {step.title}
                   </Typography>
@@ -275,6 +316,118 @@ const Home = () => {
                     {step.description}
                   </Typography>
                 </ProcessCard>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+      </Section>
+
+      <Section className="light-bg">
+        <Container maxWidth="lg">
+          <Typography variant="h2" align="center" gutterBottom>
+            קצת עלינו
+          </Typography>
+          <Typography variant="h5" align="center" color="textSecondary" paragraph sx={{ mb: 6 }}>
+            מסורת, מקצועיות וחדשנות
+          </Typography>
+
+          <Grid container spacing={4}>
+            <Grid item xs={12} md={6}>
+              <Box sx={{ position: 'relative', height: '100%', minHeight: 300 }}>
+                <ContentImage 
+                  src="/gallery/orenk-134 Large.jpeg" 
+                  alt="דביר דלויה בהופעה, מבצע פיוטים מסורתיים בהתלהבות" 
+                />
+              </Box>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Box sx={{ p: 3 }}>
+                <Typography variant="h4" gutterBottom color="primary">
+                  המסע המוזיקלי שלנו
+                </Typography>
+                <Typography paragraph>
+                  כבר למעלה מעשור שאנחנו מביאים את הקסם של המוזיקה היהודית המסורתית לאירועים מיוחדים. המסע שלנו התחיל מאהבה עמוקה למסורת ולפיוטים, והתפתח לכדי חוויה מוזיקלית ייחודית המשלבת בין העבר להווה.
+                </Typography>
+                <Typography paragraph>
+                  הצוות שלנו מורכב ממוזיקאים מקצועיים, שכל אחד מהם מביא איתו ניסיון עשיר וכישרון ייחודי. יחד, אנחנו יוצרים הרמוניה מושלמת שמתאימה לכל אירוע ולכל קהל.
+                </Typography>
+              </Box>
+            </Grid>
+          </Grid>
+        </Container>
+      </Section>
+
+      <Section>
+        <Container maxWidth="lg">
+          <Typography variant="h2" align="center" gutterBottom>
+            הכר את הצוות
+          </Typography>
+          <Typography variant="h5" align="center" color="textSecondary" paragraph sx={{ mb: 6 }}>
+            האנשים שהופכים כל אירוע לחוויה בלתי נשכחת
+          </Typography>
+
+          <Grid container spacing={4}>
+            {team.map((member, index) => (
+              <Grid item xs={12} sm={6} md={3} key={index}>
+                <TeamCard
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.2 }}
+                  viewport={{ once: true }}
+                  onClick={() => handleOpenDialog(member)}
+                >
+                  <Box sx={{ p: 2 }}>
+                    <Box 
+                      component="img"
+                      src={member.image}
+                      alt={member.imageAlt}
+                      sx={{
+                        width: '100%',
+                        height: 200,
+                        objectFit: 'cover',
+                        borderRadius: 2,
+                        mb: 2
+                      }}
+                    />
+                    <TeamMemberInfo>
+                      <Typography variant="h6" gutterBottom>
+                        {member.name}
+                      </Typography>
+                      <Typography color="primary" gutterBottom>
+                        {member.role}
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        {member.description}
+                      </Typography>
+                    </TeamMemberInfo>
+                  </Box>
+                </TeamCard>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+      </Section>
+
+      <Section className="light-bg">
+        <Container maxWidth="lg">
+          <Typography variant="h2" align="center" gutterBottom>
+            שאלות נפוצות
+          </Typography>
+          <Typography variant="h5" align="center" color="textSecondary" paragraph sx={{ mb: 6 }}>
+            כל מה שרצית לדעת
+          </Typography>
+
+          <Grid container spacing={3}>
+            {faq.map((item, index) => (
+              <Grid item xs={12} md={6} key={index}>
+                <QuestionCard elevation={3}>
+                  <Typography variant="h6" gutterBottom color="primary">
+                    {item.question}
+                  </Typography>
+                  <Typography>
+                    {item.answer}
+                  </Typography>
+                </QuestionCard>
               </Grid>
             ))}
           </Grid>
@@ -372,6 +525,7 @@ const team = [
     role: 'פייטן ראשי',
     description: '14 שנות ניסיון בפייטנות וחזנות, מומחה בסגנון הספרדי-ירושלמי',
     image: '/images/team/dvir.jpg',
+    imageAlt: 'דביר דלויה, פייטן ראשי, מחייך למצלמה בלבוש מסורתי',
     fullDescription: 'דביר דלויה הוא פייטן וחזן מוביל בעל ניסיון עשיר של 14 שנים בתחום הפייטנות והחזנות. הוא מתמחה בסגנון הספרדי-ירושלמי המסורתי, תוך שילוב ייחודי של מסורת עתיקה עם נגיעות מודרניות.',
     expertise: 'פיוטים ספרדיים, חזנות ירושלמית, הוראת בר מצווה',
     education: 'בוגר בית הספר למוזיקה מזרחית, תעודת הסמכה בחזנות מהמכון למוזיקה יהודית',
@@ -382,6 +536,7 @@ const team = [
     role: 'חזן',
     description: 'בעל ניסיון עשיר בחזנות ספרדית מסורתית',
     image: '/images/team/yossi.jpg',
+    imageAlt: 'יוסי כהן, חזן מנוסה, לבוש בגלימה מסורתית במהלך תפילה',
     fullDescription: 'יוסי כהן הוא חזן מנוסה המתמחה בחזנות ספרדית מסורתית. הוא ידוע בקולו העשיר ובהבנתו העמוקה של המסורת והמנגינות העתיקות.',
     expertise: 'חזנות ספרדית, תפילות מסורתיות, פיוטי שבת',
     education: 'למד אצל גדולי החזנים בירושלים, בוגר קורס מתקדם בחזנות',
@@ -392,6 +547,7 @@ const team = [
     role: 'נגן עוד וכינור',
     description: 'וירטואוז בכלי נגינה מזרחיים מסורתיים',
     image: '/images/team/moshe.jpg',
+    imageAlt: 'משה לוי מנגן בעוד במהלך הופעה, מרוכז ביצירת מוזיקה מסורתית',
     fullDescription: 'משה לוי הוא נגן מחונן בעל שליטה מרשימה בכלי נגינה מזרחיים מסורתיים. הוא מתמחה בנגינת עוד וכינור, ומביא את הצליל האותנטי של המוזיקה המזרחית.',
     expertise: 'נגינת עוד, כינור, קאנון ובוזוקי',
     education: 'בוגר האקדמיה למוזיקה, התמחות במוזיקה מזרחית',
@@ -402,6 +558,7 @@ const team = [
     role: 'קלידן',
     description: 'מומחה בעיבודים מוזיקליים ושילוב סגנונות',
     image: '/images/team/david.jpg',
+    imageAlt: 'דוד ישראלי מנגן בקלידים, יוצר הרמוניה בין סגנונות מוזיקליים שונים',
     fullDescription: 'דוד ישראלי הוא קלידן מוכשר ומעבד מוזיקלי מנוסה. הוא מתמחה ביצירת עיבודים מודרניים לפיוטים מסורתיים ובשילוב סגנונות מוזיקליים שונים.',
     expertise: 'עיבודים מוזיקליים, הפקה מוזיקלית, נגינת קלידים',
     education: 'תואר ראשון במוזיקה, התמחות בהלחנה ועיבוד',
@@ -409,26 +566,49 @@ const team = [
   }
 ];
 
-const process = [
+const process: ProcessStep[] = [
   {
     title: 'פגישת היכרות',
     description: 'נפגש לשיחת היכרות כדי להבין את הצרכים והרצונות שלכם',
-    image: '/gallery/orenk-134 Large.jpeg'
+    image: '/gallery/orenk-134 Large.jpeg',
+    imageAlt: 'דביר דלויה יושב עם לקוחות בפגישת היכרות, מקשיב בתשומת לב לדרישותיהם'
   },
   {
     title: 'בחירת רפרטואר',
     description: 'נבחר יחד את הפיוטים והשירים שילוו את האירוע',
-    image: '/gallery/orenk-97 Large.jpeg'
+    image: '/gallery/orenk-97 Large.jpeg',
+    imageAlt: 'דביר דלויה עובר על רשימת שירים עם לקוחות, מתאים את הרפרטואר לאופי האירוע'
   },
   {
     title: 'חזרות והכנה',
     description: 'נקיים חזרות והכנות מקדימות לקראת האירוע',
-    image: '/gallery/orenk-85 Large.jpeg'
+    image: '/gallery/orenk-85 Large.jpeg',
+    imageAlt: 'דביר דלויה בחזרה עם הצוות המוזיקלי, מתאמים את הביצועים לקראת האירוע'
   },
   {
     title: 'ביצוע מושלם',
     description: 'נדאג לכל הפרטים כדי שתוכלו להתרכז רק בשמחה',
-    image: '/gallery/orenk-78 Large.jpeg'
+    image: '/gallery/orenk-78 Large.jpeg',
+    imageAlt: 'דביר דלויה מופיע באירוע, יוצר אווירה שמחה ומרגשת עם הקהל'
+  }
+];
+
+const faq: FAQItem[] = [
+  {
+    question: "איך מתחיל תהליך ההזמנה?",
+    answer: "התהליך מתחיל בפגישת היכרות חינם, בה נשמע על האירוע שלכם, נבין את הצרכים והרצונות שלכם, ונתאים לכם את החבילה המושלמת."
+  },
+  {
+    question: "כמה זמן מראש צריך להזמין?",
+    answer: "מומלץ להזמין לפחות 3 חודשים מראש, במיוחד בעונות החתונות והאירועים. עם זאת, אנחנו תמיד משתדלים לעזור גם בהזמנות ברגע האחרון."
+  },
+  {
+    question: "האם אתם מופיעים בכל הארץ?",
+    answer: "כן, אנחנו מופיעים בכל רחבי הארץ. המשרד שלנו נמצא בבאר שבע, אך אנחנו נגיעים לכל מקום בארץ."
+  },
+  {
+    question: "איזה סוגי אירועים אתם מכסים?",
+    answer: "אנחנו מופיעים במגוון אירועים: חתונות, בר/בת מצווה, בריתות, אירועים קהילתיים, אירועי חברה ועוד. כל אירוע מקבל התאמה אישית."
   }
 ];
 

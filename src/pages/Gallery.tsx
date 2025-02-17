@@ -93,30 +93,30 @@ const CloseButton = styled(IconButton)`
 
 // רשימת התמונות בגלריה
 const galleryImages = [
-  'gallery/orenk-140 Large.jpeg',
-  'gallery/orenk-139 Large.jpeg',
-  'gallery/orenk-134 Large.jpeg',
-  'gallery/orenk-98 Large.jpeg',
-  'gallery/orenk-97 Large.jpeg',
-  'gallery/orenk-85 Large.jpeg',
-  'gallery/orenk-84 Large.jpeg',
-  'gallery/orenk-78 Large.jpeg',
-  'gallery/orenk-44 Large.jpeg',
-  'gallery/orenk-38 Large.jpeg',
-  'gallery/orenk-37 Large.jpeg',
-  'gallery/IMG-20231122-WA0015 Large.jpeg',
-  'gallery/IMG-20231122-WA0014 Large.jpeg',
-  'gallery/IMG-20231122-WA0013 Large.jpeg',
-  'gallery/IMG-20231122-WA0012 Large.jpeg',
-  'gallery/IMG-20231122-WA0011 Large.jpeg',
-  'gallery/IMG-20231122-WA0010 Large.jpeg',
-  'gallery/IMG-20231122-WA0009 Large.jpeg',
-  'gallery/IMG-20231122-WA0008 Large.jpeg',
-  'gallery/IMG-20231122-WA0007 Large.jpeg',
-  'gallery/IMG-20231122-WA0006 Large.jpeg',
-  'gallery/IMG-20231122-WA0005 Large.jpeg',
-  'gallery/IMG-20230719-WA0255 Large.jpeg',
-  'gallery/IMG-20230719-WA0253 Large.jpeg',
+  { src: 'gallery/orenk-140 Large.jpeg', alt: 'דביר דלויה שר בהופעה חיה עם מיקרופון, מלא באנרגיה ותשוקה למוזיקה' },
+  { src: 'gallery/orenk-139 Large.jpeg', alt: 'דביר דלויה מופיע באירוע משפחתי, מלווה בכלי נגינה מסורתיים' },
+  { src: 'gallery/orenk-134 Large.jpeg', alt: 'דביר דלויה בפגישת היכרות עם לקוחות, מסביר על שירותיו בחיוך חם' },
+  { src: 'gallery/orenk-98 Large.jpeg', alt: 'דביר דלויה מלמד נער בר מצווה, מדריך אותו בקריאה בתורה' },
+  { src: 'gallery/orenk-97 Large.jpeg', alt: 'דביר דלויה בחזרה לקראת אירוע, עובד על בחירת רפרטואר מוזיקלי' },
+  { src: 'gallery/orenk-85 Large.jpeg', alt: 'דביר דלויה בחזרה אחרונה לפני אירוע, מתרגל עם הצוות המוזיקלי' },
+  { src: 'gallery/orenk-84 Large.jpeg', alt: 'דביר דלויה מופיע בחתונה, שר פיוטים מסורתיים בליווי תזמורת' },
+  { src: 'gallery/orenk-78 Large.jpeg', alt: 'דביר דלויה בביצוע מרגש באירוע משפחתי, הקהל מתרגש ומשתתף' },
+  { src: 'gallery/orenk-44 Large.jpeg', alt: 'דביר דלויה בהופעה בבית כנסת, מבצע תפילות וניגונים מסורתיים' },
+  { src: 'gallery/orenk-38 Large.jpeg', alt: 'דביר דלויה בשמחת חתן וכלה, מלווה את החופה בשירה מסורתית' },
+  { src: 'gallery/orenk-37 Large.jpeg', alt: 'דביר דלויה בהופעה קהילתית, מחבר בין הקהל דרך המוזיקה' },
+  { src: 'gallery/IMG-20231122-WA0015 Large.jpeg', alt: 'דביר דלויה בחגיגת בר מצווה, מלווה את הנער בקריאה בתורה' },
+  { src: 'gallery/IMG-20231122-WA0014 Large.jpeg', alt: 'דביר דלויה בשיעור פרטי, מלמד טעמי המקרא' },
+  { src: 'gallery/IMG-20231122-WA0013 Large.jpeg', alt: 'דביר דלויה באירוע משפחתי, יוצר אווירה שמחה עם שירה וניגונים' },
+  { src: 'gallery/IMG-20231122-WA0012 Large.jpeg', alt: 'דביר דלויה בהופעה מיוחדת, משלב מוזיקה מסורתית עם עיבודים מודרניים' },
+  { src: 'gallery/IMG-20231122-WA0011 Large.jpeg', alt: 'דביר דלויה בחאפלה משפחתית, מבצע שירים מסורתיים בסגנון מזרחי' },
+  { src: 'gallery/IMG-20231122-WA0010 Large.jpeg', alt: 'דביר דלויה בשמחת חתן, מלווה את הריקודים בשירה מסורתית' },
+  { src: 'gallery/IMG-20231122-WA0009 Large.jpeg', alt: 'דביר דלויה בהופעה באירוע קהילתי, מחבר בין המסורת למודרני' },
+  { src: 'gallery/IMG-20231122-WA0008 Large.jpeg', alt: 'דביר דלויה בחגיגת בת מצווה, יוצר אווירה משפחתית וחמה' },
+  { src: 'gallery/IMG-20231122-WA0007 Large.jpeg', alt: 'דביר דלויה בהופעה מרגשת, מבצע פיוטים בסגנון ייחודי' },
+  { src: 'gallery/IMG-20231122-WA0006 Large.jpeg', alt: 'דביר דלויה בשמחת משפחה, מלווה את האירוע בשירה מסורתית' },
+  { src: 'gallery/IMG-20231122-WA0005 Large.jpeg', alt: 'דביר דלויה בהופעה חיה, משלב בין מסורת למודרני בביצועיו' },
+  { src: 'gallery/IMG-20230719-WA0255 Large.jpeg', alt: 'דביר דלויה באירוע קהילתי, מחבר בין הדורות דרך המוזיקה' },
+  { src: 'gallery/IMG-20230719-WA0253 Large.jpeg', alt: 'דביר דלויה בהופעה מיוחדת, יוצר חוויה מוזיקלית בלתי נשכחת' }
 ];
 
 const Gallery = () => {
@@ -139,7 +139,7 @@ const Gallery = () => {
       if (newIndex < 0) return galleryImages.length - 1;
       return newIndex;
     });
-    setSelectedImage(galleryImages[currentIndex - 1] || galleryImages[galleryImages.length - 1]);
+    setSelectedImage(galleryImages[currentIndex - 1]?.src || galleryImages[galleryImages.length - 1]?.src);
   };
 
   const handleNext = (e: React.MouseEvent) => {
@@ -149,7 +149,7 @@ const Gallery = () => {
       if (newIndex >= galleryImages.length) return 0;
       return newIndex;
     });
-    setSelectedImage(galleryImages[currentIndex + 1] || galleryImages[0]);
+    setSelectedImage(galleryImages[currentIndex + 1]?.src || galleryImages[0]?.src);
   };
 
   return (
@@ -186,15 +186,15 @@ const Gallery = () => {
           <GalleryGrid>
             {galleryImages.map((image, index) => (
               <ImageContainer
-                key={image}
-                onClick={() => handleImageClick(image, index)}
+                key={image.src}
+                onClick={() => handleImageClick(image.src, index)}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
               >
-                <Image src={image} alt={`תמונה ${index + 1}`} loading="lazy" />
+                <Image src={image.src} alt={image.alt} loading="lazy" />
                 <ImageOverlay className="image-overlay">
                   <Typography 
                     variant="body1" 
@@ -246,7 +246,7 @@ const Gallery = () => {
               {selectedImage && (
                 <ModalImage
                   src={selectedImage}
-                  alt="תמונה מוגדלת"
+                  alt={galleryImages.find(img => img.src === selectedImage)?.alt || 'תמונה מוגדלת'}
                   loading="lazy"
                 />
               )}

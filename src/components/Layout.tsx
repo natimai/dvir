@@ -1,5 +1,5 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
-import { Suspense, lazy } from 'react';
+import { Suspense, lazy, ReactNode } from 'react';
 import { LinearProgress } from '@mui/material';
 import { AnimatePresence } from 'framer-motion';
 import Navbar from './Navbar';
@@ -16,6 +16,11 @@ const Contact = lazy(() => import('../pages/Contact'));
 const FAQ = lazy(() => import('../pages/FAQ'));
 const Accessibility = lazy(() => import('../pages/Accessibility'));
 const Gallery = lazy(() => import('../pages/Gallery'));
+const Terms = lazy(() => import('../pages/Terms'));
+const Privacy = lazy(() => import('../pages/Privacy'));
+const Cookies = lazy(() => import('../pages/Cookies'));
+const RefundPolicy = lazy(() => import('../pages/RefundPolicy'));
+const Sitemap = lazy(() => import('../pages/Sitemap'));
 
 // Loading component
 const PageLoader = () => (
@@ -34,7 +39,11 @@ const PageLoader = () => (
   />
 );
 
-const Layout = () => {
+interface LayoutProps {
+  children: ReactNode;
+}
+
+const Layout = ({ children }: LayoutProps) => {
   const location = useLocation();
 
   return (
@@ -77,6 +86,31 @@ const Layout = () => {
               <Route path="/gallery" element={
                 <PageTransition>
                   <Gallery />
+                </PageTransition>
+              } />
+              <Route path="/terms" element={
+                <PageTransition>
+                  <Terms />
+                </PageTransition>
+              } />
+              <Route path="/privacy" element={
+                <PageTransition>
+                  <Privacy />
+                </PageTransition>
+              } />
+              <Route path="/cookies" element={
+                <PageTransition>
+                  <Cookies />
+                </PageTransition>
+              } />
+              <Route path="/refund-policy" element={
+                <PageTransition>
+                  <RefundPolicy />
+                </PageTransition>
+              } />
+              <Route path="/sitemap" element={
+                <PageTransition>
+                  <Sitemap />
                 </PageTransition>
               } />
             </Routes>

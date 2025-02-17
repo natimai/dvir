@@ -71,7 +71,10 @@ const About = () => {
               </motion.div>
             </Grid>
             <Grid item xs={12} md={6}>
-              <StoryImage src="/gallery/orenk-140 Large.jpeg" alt="דביר דלויה" />
+              <StoryImage 
+                src="/gallery/orenk-140 Large.jpeg" 
+                alt="דביר דלויה בהופעה חיה, מבצע פיוטים מסורתיים בהתלהבות ובמקצועיות, מחובר לקהל ולמוזיקה" 
+              />
             </Grid>
           </Grid>
         </Container>

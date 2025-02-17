@@ -42,9 +42,9 @@ const testimonials = [
 const TestimonialsContainer = styled.section`
   position: relative;
   overflow: hidden;
-  background: linear-gradient(165deg, #1e3a8a 0%, #3b82f6 100%);
+  background: linear-gradient(165deg, #f8fafc 0%, #ffffff 100%);
   padding: 120px 0;
-  color: white;
+  color: #1e3a8a;
   min-height: 80vh;
   display: flex;
   align-items: center;
@@ -55,12 +55,12 @@ const TestimonialsContainer = styled.section`
 `;
 
 const TestimonialCard = styled(motion.div)`
-  background: rgba(255, 255, 255, 0.1);
+  background: white;
   backdrop-filter: blur(10px);
   border-radius: 24px;
   padding: 48px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(30, 58, 138, 0.1);
   position: relative;
   overflow: hidden;
   height: 100%;
@@ -78,7 +78,7 @@ const TestimonialCard = styled(motion.div)`
     right: 20px;
     font-size: 120px;
     font-family: Georgia, serif;
-    color: rgba(255, 255, 255, 0.1);
+    color: rgba(30, 58, 138, 0.1);
     line-height: 1;
   }
 
@@ -89,31 +89,32 @@ const TestimonialCard = styled(motion.div)`
     left: 20px;
     font-size: 120px;
     font-family: Georgia, serif;
-    color: rgba(255, 255, 255, 0.1);
+    color: rgba(30, 58, 138, 0.1);
     line-height: 1;
     transform: rotate(180deg);
   }
 `;
 
 const EventTag = styled.span`
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(30, 58, 138, 0.1);
   padding: 6px 16px;
   border-radius: 20px;
   font-size: 0.9rem;
   margin-top: 12px;
   display: inline-block;
   backdrop-filter: blur(5px);
+  color: #1e3a8a;
 `;
 
 const NavigationButton = styled(IconButton)`
-  color: white;
-  background: rgba(255, 255, 255, 0.1);
+  color: #1e3a8a;
+  background: white;
   backdrop-filter: blur(10px);
   margin: 0 8px;
   padding: 12px;
   
   &:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.9);
   }
 
   svg {
@@ -200,7 +201,7 @@ export const TestimonialsSection = () => {
               sx={{
                 fontSize: { xs: '2.5rem', md: '3.5rem' },
                 fontWeight: 700,
-                color: 'white'
+                color: '#1e3a8a'
               }}
             >
               מה אומרים עלינו
@@ -210,7 +211,7 @@ export const TestimonialsSection = () => {
               sx={{ 
                 maxWidth: '600px', 
                 margin: '0 auto',
-                color: 'rgba(255, 255, 255, 0.9)'
+                color: '#3b82f6'
               }}
             >
               חוויות אמיתיות מלקוחות מרוצים
@@ -245,7 +246,7 @@ export const TestimonialsSection = () => {
                     lineHeight: 1.8,
                     position: 'relative',
                     zIndex: 1,
-                    color: 'rgba(255, 255, 255, 0.9)',
+                    color: '#1e3a8a',
                     mb: 4,
                     fontWeight: 500
                   }}
@@ -257,7 +258,7 @@ export const TestimonialsSection = () => {
                     variant="h6" 
                     sx={{ 
                       fontWeight: 600,
-                      color: 'white',
+                      color: '#3b82f6',
                       fontSize: { xs: '1.1rem', md: '1.3rem' }
                     }}
                   >
