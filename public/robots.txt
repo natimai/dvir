@@ -1,4 +1,14 @@
+# Allow all crawlers
 User-agent: *
 Allow: /
 
-Sitemap: https://dvir-daloya.co.il/sitemap.xml 
+# Sitemap location
+Sitemap: https://dvir-daloya.co.il/sitemap.xml
+
+# Disallow admin and private areas
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
+
+# Crawl-delay
+Crawl-delay: 10 
