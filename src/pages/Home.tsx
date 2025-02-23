@@ -1,4 +1,4 @@
-import { Container, Typography, Button, Box, Grid, Dialog, DialogContent, DialogTitle, IconButton, Paper, Theme } from '@mui/material';
+import { Container, Typography, Button, Box, Grid, Dialog, DialogContent, DialogTitle, IconButton, Paper, Theme, Card, CardContent } from '@mui/material';
 import { motion } from 'framer-motion';
 import styled from '@emotion/styled';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
@@ -42,7 +42,7 @@ const Section = styled('section')`
   }
 `;
 
-const Card = styled(motion.div)`
+const StyledCard = styled(motion.div)`
   background: white;
   border-radius: 16px;
   padding: 32px;
@@ -360,6 +360,60 @@ const Home = () => {
       <Section>
         <Container maxWidth="lg">
           <Typography variant="h2" align="center" gutterBottom>
+            המטרה החברתית שלנו
+          </Typography>
+          <Typography variant="h5" align="center" color="textSecondary" paragraph sx={{ mb: 6 }}>
+            מחזירים לקהילה
+          </Typography>
+
+          <Box sx={{ 
+            bgcolor: 'primary.main', 
+            color: 'white', 
+            p: 4, 
+            borderRadius: 2,
+            textAlign: 'center',
+            mb: 4
+          }}>
+            <Typography variant="h4" gutterBottom>
+              100% מההכנסות נתרמות לקהילה
+            </Typography>
+            <Typography variant="body1" paragraph>
+              כל ההכנסות מהאירועים והפייטנים שלנו מוקדשות במלואן לטובת עמותת למען באר שבע והנגב, האקדמיה לבר מצווה, והפקת בר מצווה לילדים בעלי צרכים מיוחדים וחסרי יכולת כלכלית.
+            </Typography>
+          </Box>
+
+          <Grid container spacing={4}>
+            <Grid item xs={12} md={6}>
+              <Card sx={{ height: '100%', boxShadow: 3 }}>
+                <CardContent>
+                  <Typography variant="h5" gutterBottom color="primary">
+                    עמותת למען באר שבע והנגב
+                  </Typography>
+                  <Typography>
+                    אנו פועלים לקידום החינוך והתרבות בבאר שבע והנגב, תוך דגש על שימור והנחלת המסורת היהודית לדורות הבאים.
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Card sx={{ height: '100%', boxShadow: 3 }}>
+                <CardContent>
+                  <Typography variant="h5" gutterBottom color="primary">
+                    הנגשת בר מצווה לכולם
+                  </Typography>
+                  <Typography>
+                    אנו מאמינים שכל ילד ראוי לחגוג את כניסתו למצוות בכבוד ובשמחה, ללא קשר למצבו הכלכלי או צרכיו המיוחדים.
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+        </Container>
+      </Section>
+
+      <Section className="light-bg">
+        <Container maxWidth="lg">
+          <Typography variant="h2" align="center" gutterBottom>
             הכר את הצוות
           </Typography>
           <Typography variant="h5" align="center" color="textSecondary" paragraph sx={{ mb: 6 }}>
@@ -408,7 +462,7 @@ const Home = () => {
         </Container>
       </Section>
 
-      <Section className="light-bg">
+      <Section>
         <Container maxWidth="lg">
           <Typography variant="h2" align="center" gutterBottom>
             שאלות נפוצות
@@ -514,55 +568,55 @@ const benefits = [
     description: 'מחתונות ועד אירועים קהילתיים, אנחנו מתאימים את הרפרטואר והסגנון לאופי האירוע והקהל שלכם.'
   },
   {
-    title: 'צוות מקצועי ומנוסה',
-    description: 'צוות של מוזיקאים מקצועיים, פייטנים וחזנים מנוסים, שיחד יוצרים הרמוניה מושלמת באירוע שלכם.'
+    title: 'תרומה לקהילה',
+    description: '100% מההכנסות מכלל האירועים והפייטנים שלנו נתרמות לטובת עמותת למען באר שבע והנגב ולהפקת בר מצווה לילדים בעלי צרכים מיוחדים.'
   }
 ];
 
 const team = [
   {
     name: 'דביר דלויה',
-    role: 'פייטן ראשי',
-    description: '14 שנות ניסיון בפייטנות וחזנות, מומחה בסגנון הספרדי-ירושלמי',
-    image: '/images/team/dvir.jpg',
-    imageAlt: 'דביר דלויה, פייטן ראשי, מחייך למצלמה בלבוש מסורתי',
-    fullDescription: 'דביר דלויה הוא פייטן וחזן מוביל בעל ניסיון עשיר של 14 שנים בתחום הפייטנות והחזנות. הוא מתמחה בסגנון הספרדי-ירושלמי המסורתי, תוך שילוב ייחודי של מסורת עתיקה עם נגיעות מודרניות.',
-    expertise: 'פיוטים ספרדיים, חזנות ירושלמית, הוראת בר מצווה',
-    education: 'בוגר בית הספר למוזיקה מזרחית, תעודת הסמכה בחזנות מהמכון למוזיקה יהודית',
-    experience: '14 שנות ניסיון בהופעות, הוראה והנחיית טקסים'
+    role: 'מנהל אקדמיה לבר מצווה ופייטן מקצועי',
+    description: 'מומחה בחזנות מרוקאית, פיוטים ספרדיים ומסורת חזנות ירושלמית',
+    image: '/staff/dvir.jpeg',
+    imageAlt: 'דביר דלויה, מנהל אקדמיה לבר מצווה ופייטן מקצועי',
+    fullDescription: 'דביר דלויה הוא מנהל אקדמיה לבר מצווה ופייטן מקצועי עם 14 שנות ניסיון. הוא מתמחה בחזנות מרוקאית, פיוטים ספרדיים ומסורת חזנות ירושלמית. כבוגר חינוך מיוחד, דביר מביא גישה ייחודית ומותאמת אישית להוראת בר מצווה.',
+    expertise: 'חזנות מרוקאית, פיוטים ספרדיים, מסורת חזנות ירושלמית, הוראת בר מצווה',
+    education: 'בוגר חינוך מיוחד, הכשרה מקצועית בחזנות ופיוטים',
+    experience: '14 שנות ניסיון בהוראת בר מצווה, הופעות וניהול אקדמיה'
   },
   {
-    name: 'יוסי כהן',
-    role: 'חזן',
-    description: 'בעל ניסיון עשיר בחזנות ספרדית מסורתית',
-    image: '/images/team/yossi.jpg',
-    imageAlt: 'יוסי כהן, חזן מנוסה, לבוש בגלימה מסורתית במהלך תפילה',
-    fullDescription: 'יוסי כהן הוא חזן מנוסה המתמחה בחזנות ספרדית מסורתית. הוא ידוע בקולו העשיר ובהבנתו העמוקה של המסורת והמנגינות העתיקות.',
-    expertise: 'חזנות ספרדית, תפילות מסורתיות, פיוטי שבת',
-    education: 'למד אצל גדולי החזנים בירושלים, בוגר קורס מתקדם בחזנות',
-    experience: '20 שנות ניסיון כחזן בבתי כנסת מובילים'
+    name: 'רז נעמן',
+    role: 'פייטן וחזן',
+    description: 'בוגר מרכז שירה ופיוט באשדוד, מומחה בחזנות מרוקאית ופיוטים ספרדיים',
+    image: '/staff/raz naaman.jpg',
+    imageAlt: 'רז נעמן, פייטן וחזן מקצועי',
+    fullDescription: 'רז נעמן הוא בוגר מרכז שירה ופיוט באשדוד עם 8 שנות ניסיון בתחום הפיוט והשירה. הוא מתמחה בחזנות מרוקאית, פיוטים ספרדיים ושירה מזרחית.',
+    expertise: 'חזנות מרוקאית, פיוטים ספרדיים, שירה מזרחית',
+    education: 'בוגר מרכז שירה ופיוט באשדוד',
+    experience: '8 שנות ניסיון בפיוט ושירה'
   },
   {
-    name: 'משה לוי',
-    role: 'נגן עוד וכינור',
-    description: 'וירטואוז בכלי נגינה מזרחיים מסורתיים',
-    image: '/images/team/moshe.jpg',
-    imageAlt: 'משה לוי מנגן בעוד במהלך הופעה, מרוכז ביצירת מוזיקה מסורתית',
-    fullDescription: 'משה לוי הוא נגן מחונן בעל שליטה מרשימה בכלי נגינה מזרחיים מסורתיים. הוא מתמחה בנגינת עוד וכינור, ומביא את הצליל האותנטי של המוזיקה המזרחית.',
-    expertise: 'נגינת עוד, כינור, קאנון ובוזוקי',
-    education: 'בוגר האקדמיה למוזיקה, התמחות במוזיקה מזרחית',
-    experience: '15 שנות ניסיון בהופעות והקלטות'
+    name: 'חיים אלון',
+    role: 'פייטן בכיר',
+    description: 'מגדולי הפייטנים בארץ, בעל ניסיון של מעל 30 שנה',
+    image: '/staff/haim.jpg',
+    imageAlt: 'חיים אלון, מגדולי הפייטנים בארץ',
+    fullDescription: 'חיים אלון הוא מגדולי הפייטנים בארץ, בעל ניסיון עשיר של למעלה מ-30 שנה בתחום. הופיע על הבמות הגדולות ביותר בארץ והביא את אמנות הפיוט לקהלים רחבים.',
+    expertise: 'פיוטים מסורתיים, חזנות, הופעות במות גדולות',
+    education: 'הכשרה מקצועית בפיוט וחזנות',
+    experience: 'מעל 30 שנות ניסיון בהופעות ופיוט'
   },
   {
-    name: 'דוד ישראלי',
-    role: 'קלידן',
-    description: 'מומחה בעיבודים מוזיקליים ושילוב סגנונות',
-    image: '/images/team/david.jpg',
-    imageAlt: 'דוד ישראלי מנגן בקלידים, יוצר הרמוניה בין סגנונות מוזיקליים שונים',
-    fullDescription: 'דוד ישראלי הוא קלידן מוכשר ומעבד מוזיקלי מנוסה. הוא מתמחה ביצירת עיבודים מודרניים לפיוטים מסורתיים ובשילוב סגנונות מוזיקליים שונים.',
-    expertise: 'עיבודים מוזיקליים, הפקה מוזיקלית, נגינת קלידים',
-    education: 'תואר ראשון במוזיקה, התמחות בהלחנה ועיבוד',
-    experience: '12 שנות ניסיון בהפקה מוזיקלית והופעות חיות'
+    name: 'אופיר אלחייני',
+    role: 'זמר ויוצר',
+    description: 'זמר ויוצר בזמר הישראלי, בעל סגנון ייחודי בהשראת חנן בן ארי וישי ריבו',
+    image: '/images/team/ophir.jpg',
+    imageAlt: 'אופיר אלחייני, זמר ויוצר בזמר הישראלי',
+    fullDescription: 'אופיר אלחייני הוא זמר ויוצר מוכשר שהחל את דרכו המוזיקלית בגיל צעיר. בעל סגנון ייחודי המשלב בין המסורתי למודרני, פרץ לאחרונה עם אלבום בכורה בסגנון המזכיר את חנן בן ארי וישי ריבו.',
+    expertise: 'זמר ישראלי, יצירה מוזיקלית, הופעות חיות',
+    education: 'הכשרה מוזיקלית מקצועית',
+    experience: '10 שנות ניסיון בשירה והופעות'
   }
 ];
 

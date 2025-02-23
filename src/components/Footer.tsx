@@ -216,7 +216,7 @@ const Footer = () => {
         {/* מידע משפטי בתחתית */}
         <LegalSection>
           <Typography variant="body2" paragraph>
-            © {currentYear} דביר דלויה. כל הזכויות שמורות.
+            © {currentYear} עמותת למען באר שבע והנגב. כל הזכויות שמורות.
           </Typography>
           <Typography variant="body2">
             האתר נבנה על ידי נתנאל מימון | 

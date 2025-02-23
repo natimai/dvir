@@ -60,13 +60,26 @@ const About = () => {
                 transition={{ duration: 0.8 }}
               >
                 <Typography variant="h2" gutterBottom>
-                  דביר דלויה - הקול שמלווה את הרגעים המיוחדים שלכם
+                  דביר דלויה - מנהל אקדמיה לבר מצווה ופייטן מקצועי
                 </Typography>
                 <Typography variant="h5" gutterBottom color="primary">
-                  זמר מקצועי לאירועים ומלמד בר מצווה
+                  14 שנות ניסיון בפייטנות וחזנות
                 </Typography>
                 <Typography paragraph>
-                  ברוכים הבאים לעולמו של דביר וצוות המוזיקאים המדהים שלו! דביר הוא זמר מוכשר עם תשוקה למוזיקה יהודית, והוא מלווה בכמה מהמוזיקאים יוצאי הדופן בתעשייה. יחד, הם מביאים רמה של אנרגיה והתרגשות לכל אירוע שאין שני לו.
+                  דביר דלויה הוא פייטן וחזן מקצועי המתמחה בפייטנות מרוקאית, פיוטים ספרדיים וחזנות ירושלמית. כבעל תואר ראשון בחינוך מיוחד, דביר משלב את כישוריו החינוכיים עם אהבתו למוזיקה ולמסורת, ומעניק חוויה ייחודית ומעשירה לכל תלמיד ואירוע.
+                </Typography>
+                <Typography 
+                  variant="h6" 
+                  sx={{ 
+                    mt: 3, 
+                    color: 'primary.main',
+                    fontWeight: 'bold',
+                    bgcolor: 'rgba(59, 130, 246, 0.1)',
+                    p: 2,
+                    borderRadius: 2
+                  }}
+                >
+                  100% מההכנסות מכלל האירועים והפייטנים שלנו נתרמות לטובת עמותת למען באר שבע והנגב, האקדמיה לבר מצווה, והפקת בר מצווה לילדים בעלי צרכים מיוחדים וחסרי יכולת כלכלית.
                 </Typography>
               </motion.div>
             </Grid>
@@ -83,7 +96,7 @@ const About = () => {
       <StorySection>
         <Container maxWidth="lg">
           <Typography variant="h3" align="center" gutterBottom sx={{ mb: 6 }}>
-            הסיפור שלנו
+            התמחות וניסיון
           </Typography>
           
           <Grid container spacing={4}>
@@ -94,10 +107,10 @@ const About = () => {
                 transition={{ duration: 0.6 }}
               >
                 <Typography variant="h5" gutterBottom>
-                  תשוקה למוזיקה
+                  התמחות מקצועית
                 </Typography>
                 <Typography paragraph>
-                  מה שמייחד את הצוות שלנו הוא היכולת למזג בצורה חלקה מוזיקה יהודית מסורתית עם סגנונות וז'אנרים עכשוויים. הרפרטואר שלנו כולל הכל, משירי עם יהודיים קלאסיים ועד להיטי פופ מודרניים.
+                  מומחה בפייטנות מרוקאית, פיוטים ספרדיים וחזנות ירושלמית. משלב בין מסורת עתיקה לביצועים מודרניים, תוך שמירה על האותנטיות והעומק של המוזיקה היהודית.
                 </Typography>
               </StoryCard>
 
@@ -107,10 +120,10 @@ const About = () => {
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
                 <Typography variant="h5" gutterBottom>
-                  צוות מקצועי
+                  השכלה וכישורים
                 </Typography>
                 <Typography paragraph>
-                  כל אחד מחברי הצוות הוא אמן בכלי שלו, בין אם זה גיטרה, מקלדת או תופים. הם עובדים יחד ללא רבב, ויוצרים צליל שהוא גם חזק וגם הרמוני. יחד, אנחנו יוצרים חוויה מוזיקלית שלמה ומרגשת.
+                  בעל תואר ראשון בחינוך מיוחד, המאפשר גישה מותאמת אישית לכל תלמיד. משלב את הידע החינוכי עם המומחיות המוזיקלית ליצירת חוויית למידה מעשירה ומעצימה.
                 </Typography>
               </StoryCard>
 
@@ -120,23 +133,10 @@ const About = () => {
                 transition={{ duration: 0.6, delay: 0.4 }}
               >
                 <Typography variant="h5" gutterBottom>
-                  חוויה בלתי נשכחת
+                  ניסיון עשיר
                 </Typography>
                 <Typography paragraph>
-                  דביר הוא שואומן אמיתי, עם קול שיכול ללכוד את תשומת הלב של כל קהל. הוא יודע לעסוק בקהל שלו וליצור אווירה של שמחה וחגיגה מושלמת לכל אירוע, מעלייה לתורה ועד בר מצווה והלאה.
-                </Typography>
-              </StoryCard>
-
-              <StoryCard
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.6 }}
-              >
-                <Typography variant="h5" gutterBottom>
-                  המחויבות שלנו
-                </Typography>
-                <Typography paragraph>
-                  אנחנו מתחייבים להפוך את היום המיוחד שלכם לבלתי נשכח. עם הכישרון והתשוקה יוצאי הדופן שלנו למוזיקה, אנחנו מבטיחים לכם חוויה מוזיקלית מושלמת שתישאר איתכם לתמיד.
+                  14 שנות ניסיון בתחום הפייטנות והחזנות, במהלכן ליווה מאות אירועים ותלמידים. מביא עמו ניסיון עשיר בהופעות חיות, הוראה והכנה לבר מצווה, וניהול אקדמיה מקצועית.
                 </Typography>
               </StoryCard>
             </Grid>
@@ -216,6 +216,36 @@ const About = () => {
                     </Box>
                   ))}
                 </Box>
+              </StyledPaper>
+            </Grid>
+          </Grid>
+        </Container>
+      </Section>
+
+      <Section sx={{ bgcolor: '#1e3a8a', color: 'white' }}>
+        <Container maxWidth="lg">
+          <Typography variant="h3" align="center" gutterBottom sx={{ color: 'white' }}>
+            המטרה החברתית שלנו
+          </Typography>
+          <Grid container spacing={4} sx={{ mt: 4 }}>
+            <Grid item xs={12} md={6}>
+              <StyledPaper sx={{ bgcolor: 'rgba(255,255,255,0.1)', color: 'white' }}>
+                <Typography variant="h5" gutterBottom sx={{ color: 'white' }}>
+                  תרומה לקהילה
+                </Typography>
+                <Typography paragraph>
+                  כל ההכנסות מהאירועים והפייטנים שלנו מוקדשות במלואן לטובת עמותת למען באר שבע והנגב. אנחנו מאמינים שכוחה של קהילה נמדד ביכולתה לתמוך בחבריה.
+                </Typography>
+              </StyledPaper>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <StyledPaper sx={{ bgcolor: 'rgba(255,255,255,0.1)', color: 'white' }}>
+                <Typography variant="h5" gutterBottom sx={{ color: 'white' }}>
+                  הנגשת בר מצווה לכולם
+                </Typography>
+                <Typography paragraph>
+                  אנו מקדישים את המשאבים להפקת אירועי בר מצווה עבור ילדים בעלי צרכים מיוחדים וילדים ממשפחות מעוטות יכולת, מתוך אמונה שכל ילד ראוי לחגוג את כניסתו למצוות בכבוד ובשמחה.
+                </Typography>
               </StyledPaper>
             </Grid>
           </Grid>
