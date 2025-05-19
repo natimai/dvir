@@ -90,6 +90,16 @@ const LegalSection = styled(Box)`
   color: rgba(255, 255, 255, 0.6);
 `;
 
+const ExternalLink = styled('a')`
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: white;
+  }
+`;
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   
@@ -219,7 +229,7 @@ const Footer = () => {
             © {currentYear} עמותת למען באר שבע והנגב. כל הזכויות שמורות.
           </Typography>
           <Typography variant="body2">
-            האתר נבנה על ידי נתנאל מימון | 
+            האתר נבנה על ידי <ExternalLink href="https://natimarketing.co.il" target="_blank" rel="noopener noreferrer">נתנאל מימון</ExternalLink> | 
             <Link to="/sitemap" style={{ color: 'inherit', marginRight: '4px' }}>מפת אתר</Link>
           </Typography>
         </LegalSection>
@@ -228,4 +238,4 @@ const Footer = () => {
   );
 };
 
-export default Footer; 
+export default Footer;
