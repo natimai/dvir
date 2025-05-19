@@ -21,6 +21,9 @@ const Privacy = lazy(() => import('../pages/Privacy'));
 const Cookies = lazy(() => import('../pages/Cookies'));
 const RefundPolicy = lazy(() => import('../pages/RefundPolicy'));
 const Sitemap = lazy(() => import('../pages/Sitemap'));
+const BarMitzvah = lazy(() => import('../pages/services/BarMitzvah'));
+const SpecialEvents = lazy(() => import('../pages/services/SpecialEvents'));
+const Teaching = lazy(() => import('../pages/services/Teaching'));
 
 // Loading component
 const PageLoader = () => (
@@ -62,6 +65,21 @@ const Layout = () => {
               <Route path="/services" element={
                 <PageTransition>
                   <Services />
+                </PageTransition>
+              } />
+              <Route path="/services/bar-mitzvah" element={
+                <PageTransition>
+                  <BarMitzvah />
+                </PageTransition>
+              } />
+              <Route path="/services/special-events" element={
+                <PageTransition>
+                  <SpecialEvents />
+                </PageTransition>
+              } />
+              <Route path="/services/teaching" element={
+                <PageTransition>
+                  <Teaching />
                 </PageTransition>
               } />
               <Route path="/faq" element={
@@ -120,4 +138,4 @@ const Layout = () => {
   );
 };
 
-export default Layout; 
+export default Layout;

@@ -2,6 +2,7 @@ import { Container, Typography, Grid, Box, Button, Accordion, AccordionSummary, 
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { motion } from 'framer-motion';
 import styled from '@emotion/styled';
+import { Link } from 'react-router-dom';
 
 const Section = styled.section`
   padding: 80px 0;
@@ -55,7 +56,8 @@ const Services = () => {
                     variant="contained"
                     color="primary"
                     fullWidth
-                    href="/contact"
+                    component={Link}
+                    to={service.link}
                     sx={{ mt: 2 }}
                   >
                     לפרטים נוספים
@@ -121,7 +123,8 @@ const services = [
       'התאמה אישית לסגנון המשפחה',
       'אפשרות להקלטת קטעים נבחרים',
       'חזרות והכנה מקדימה'
-    ]
+    ],
+    link: '/services/bar-mitzvah'
   },
   {
     title: 'אירועים מיוחדים',
@@ -133,7 +136,8 @@ const services = [
       'שבתות חתן מיוחדות',
       'הופעות בבתי כנסת',
       'אירועי גיבוש וחברה'
-    ]
+    ],
+    link: '/services/special-events'
   },
   {
     title: 'לימוד והדרכה',
@@ -145,7 +149,8 @@ const services = [
       'הדרכת חזנים צעירים',
       'לימוד מסורת ספרדית',
       'הכשרת בעלי תפילה'
-    ]
+    ],
+    link: '/services/teaching'
   }
 ];
 
@@ -187,4 +192,4 @@ const faqs = [
   }
 ];
 
-export default Services; 
+export default Services;
