@@ -47,6 +47,11 @@ const StoryCard = styled(motion.div)`
   margin-bottom: 24px;
 `;
 
+const MissionSection = styled(Section)`
+  background-color: #1e3a8a;
+  color: white;
+`;
+
 const About = () => {
   return (
     <>
@@ -222,7 +227,7 @@ const About = () => {
         </Container>
       </Section>
 
-      <Section sx={{ bgcolor: '#1e3a8a', color: 'white' }}>
+      <MissionSection>
         <Container maxWidth="lg">
           <Typography variant="h3" align="center" gutterBottom sx={{ color: 'white' }}>
             המטרה החברתית שלנו
@@ -250,7 +255,7 @@ const About = () => {
             </Grid>
           </Grid>
         </Container>
-      </Section>
+      </MissionSection>
     </>
   );
 };
@@ -286,4 +291,4 @@ const notForWho = [
   'למי שאין לו עניין בחוויה מוזיקלית מקצועית'
 ];
 
-export default About; 
+export default About;
