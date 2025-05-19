@@ -7,6 +7,7 @@ import Footer from './Footer';
 import WhatsAppButton from './WhatsAppButton';
 import { AccessibilityButton } from './AccessibilityButton';
 import { PageTransition } from './PageTransition';
+import ScrollToTop from './ScrollToTop';
 
 // Lazy load pages
 const Home = lazy(() => import('../pages/Home'));
@@ -47,6 +48,7 @@ const Layout = () => {
 
   return (
     <div className="flex flex-col min-h-screen">
+      <ScrollToTop />
       <Navbar />
       <main id="main-content" className="flex-grow relative">
         <Suspense fallback={<PageLoader />}>
