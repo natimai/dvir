@@ -10,5 +10,21 @@ Disallow: /admin/
 Disallow: /private/
 Disallow: /api/
 
+# Allow specific pages
+Allow: /about
+Allow: /services
+Allow: /services/bar-mitzvah
+Allow: /services/special-events
+Allow: /services/teaching
+Allow: /faq
+Allow: /contact
+Allow: /accessibility
+Allow: /gallery
+Allow: /terms
+Allow: /privacy
+Allow: /cookies
+Allow: /refund-policy
+Allow: /sitemap
+
 # Crawl-delay
-Crawl-delay: 10 
+Crawl-delay: 5 

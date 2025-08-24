@@ -1,0 +1,5 @@
+Contact: mailto:[אימייל]
+Expires: 2026-01-20T00:00:00.000Z
+Preferred-Languages: he, en
+Canonical: https://dvir-daloya.co.il/.well-known/security.txt
+Policy: https://dvir-daloya.co.il/security-policy
