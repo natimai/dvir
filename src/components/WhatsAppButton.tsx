@@ -27,6 +27,15 @@ const WhatsAppButton = () => {
   const message = 'היי דביר, אשמח לשמוע פרטים על שירותי הפייטנות והחזנות';
   
   const handleClick = () => {
+    // שלח אירוע Google Tag Manager
+    if (typeof window !== 'undefined' && (window as any).sendGTMEvent) {
+      (window as any).sendGTMEvent('whatsapp_click', {
+        phone_number: phoneNumber,
+        source: 'floating_button',
+        page_location: window.location.pathname
+      });
+    }
+    
     window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
   };
 

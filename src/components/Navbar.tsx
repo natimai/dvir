@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { AppBar, Toolbar, IconButton, Drawer, Container, Box } from '@mui/material';
+import { AppBar, Toolbar, IconButton, Drawer, Container, Box, Typography } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -92,6 +92,13 @@ const menuItems = [
   { text: 'צור קשר', path: '/contact' },
 ];
 
+const legalItems = [
+  { text: 'תנאי שימוש', path: '/terms' },
+  { text: 'מדיניות פרטיות', path: '/privacy' },
+  { text: 'מדיניות עוגיות', path: '/cookies' },
+  { text: 'הצהרת נגישות', path: '/accessibility' },
+];
+
 const mobileNavVariants = {
   hidden: { opacity: 0, x: 50 },
   visible: (i: number) => ({
@@ -147,6 +154,29 @@ const Navbar = () => {
             </Link>
           </MobileNavItem>
         ))}
+        
+        <Box sx={{ mt: 4, pt: 2, borderTop: '1px solid rgba(255, 255, 255, 0.2)' }}>
+          <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.7)', mb: 2, textAlign: 'center' }}>
+            מידע משפטי
+          </Typography>
+          {legalItems.map((item, index) => (
+            <MobileNavItem
+              key={item.text}
+              custom={index + menuItems.length}
+              initial="hidden"
+              animate="visible"
+              variants={mobileNavVariants}
+            >
+              <Link
+                to={item.path}
+                onClick={handleDrawerToggle}
+                className={isActive(item.path)}
+              >
+                {item.text}
+              </Link>
+            </MobileNavItem>
+          ))}
+        </Box>
       </Box>
     </Box>
   );

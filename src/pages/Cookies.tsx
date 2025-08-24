@@ -1,5 +1,6 @@
-import { Container, Typography, Box, Paper } from '@mui/material';
+import { Container, Typography, Box, Paper, Button, Stack } from '@mui/material';
 import styled from '@emotion/styled';
+import CookieManager from '../components/CookieManager';
 
 const Section = styled.section`
   padding: 80px 0;
@@ -28,6 +29,19 @@ const Cookies = () => {
         >
           מדיניות עוגיות
         </Typography>
+
+        <Box sx={{ textAlign: 'center', mb: 4 }}>
+          <Stack direction="row" spacing={2} justifyContent="center" flexWrap="wrap">
+            <Button
+              variant="contained"
+              size="large"
+              onClick={() => document.getElementById('cookie-manager')?.scrollIntoView({ behavior: 'smooth' })}
+              sx={{ minWidth: 200 }}
+            >
+              ניהול הגדרות קוקיז
+            </Button>
+          </Stack>
+        </Box>
 
         <StyledPaper>
           <Typography variant="h5" gutterBottom color="primary">
@@ -146,6 +160,10 @@ const Cookies = () => {
           <Typography variant="body2">
             עודכן לאחרונה: {new Date().toLocaleDateString('he-IL')}
           </Typography>
+        </Box>
+
+        <Box id="cookie-manager" sx={{ mt: 6 }}>
+          <CookieManager />
         </Box>
       </Container>
     </Section>

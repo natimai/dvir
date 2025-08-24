@@ -8,6 +8,9 @@ import WhatsAppButton from './WhatsAppButton';
 import { AccessibilityButton } from './AccessibilityButton';
 import { PageTransition } from './PageTransition';
 import ScrollToTop from './ScrollToTop';
+import CookieBanner from './CookieBanner';
+import GoogleTagManager from './GoogleTagManager';
+import GTMEvents from './GTMEvents';
 
 // Lazy load pages
 const Home = lazy(() => import('../pages/Home'));
@@ -48,6 +51,8 @@ const Layout = () => {
 
   return (
     <div className="flex flex-col min-h-screen">
+      <GoogleTagManager />
+      <GTMEvents />
       <ScrollToTop />
       <Navbar />
       <main id="main-content" className="flex-grow relative">
@@ -136,6 +141,7 @@ const Layout = () => {
       <Footer />
       <WhatsAppButton />
       <AccessibilityButton />
+      <CookieBanner />
     </div>
   );
 };

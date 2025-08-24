@@ -178,6 +178,15 @@ const Footer = () => {
               <FooterLink to="/accessibility">הצהרת נגישות</FooterLink>
               <FooterLink to="/cookies">מדיניות עוגיות</FooterLink>
               <FooterLink to="/refund-policy">מדיניות ביטולים והחזרים</FooterLink>
+              <FooterLink 
+                to="/cookies" 
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('cookie-manager')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                עדכן הגדרות קוקיז
+              </FooterLink>
             </FooterSection>
           </Grid>
         </Grid>

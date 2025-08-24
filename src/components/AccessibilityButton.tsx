@@ -502,6 +502,17 @@ export const AccessibilityButton = () => {
           <AccessibilityLink to="/accessibility" onClick={handleClose}>
             הצהרת נגישות מלאה
           </AccessibilityLink>
+          
+          <AccessibilityLink 
+            to="/cookies" 
+            onClick={(e) => {
+              e.preventDefault();
+              handleClose();
+              document.getElementById('cookie-manager')?.scrollIntoView({ behavior: 'smooth' });
+            }}
+          >
+            עדכן הגדרות קוקיז
+          </AccessibilityLink>
         </AccessibilityPanel>
       </Popover>
     </>

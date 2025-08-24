@@ -187,9 +187,27 @@ const Contact = () => {
       });
 
       setSubmitStatus('success');
+      
+      // שלח אירוע Google Tag Manager
+      if (typeof window !== 'undefined' && (window as any).sendGTMEvent) {
+        (window as any).sendGTMEvent('form_submit', {
+          form_name: 'contact_form',
+          event_type: sanitizedData.eventType,
+          package: sanitizedData.package,
+          user_email: sanitizedData.email
+        });
+      }
     } catch (error) {
       console.error('Error:', error);
       setSubmitStatus('error');
+      
+      // שלח אירוע שגיאה Google Tag Manager
+      if (typeof window !== 'undefined' && (window as any).sendGTMEvent) {
+        (window as any).sendGTMEvent('form_error', {
+          form_name: 'contact_form',
+          error_message: error instanceof Error ? error.message : 'Unknown error'
+        });
+      }
     } finally {
       setIsSubmitting(false);
     }
@@ -198,6 +216,15 @@ const Contact = () => {
   const handleWhatsAppClick = () => {
     const phoneNumber = '972586276261';
     const message = 'היי דביר, אשמח לשמוע פרטים על שירותי הפייטנות והחזנות';
+    
+    // שלח אירוע Google Tag Manager
+    if (typeof window !== 'undefined' && (window as any).sendGTMEvent) {
+      (window as any).sendGTMEvent('whatsapp_click', {
+        phone_number: phoneNumber,
+        source: 'contact_page'
+      });
+    }
+    
     window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
   };
 
