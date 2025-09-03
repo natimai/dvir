@@ -215,7 +215,7 @@ const Contact = () => {
 
   const handleWhatsAppClick = () => {
     const phoneNumber = '972586276261';
-    const message = 'היי דביר, אשמח לשמוע פרטים על שירותי הפייטנות והחזנות';
+    const message = 'היי דביר, אשמח לשמוע פרטים על פייטן לבר מצווה בבאר שבע';
     
     // שלח אירוע Google Tag Manager
     if (typeof window !== 'undefined' && (window as any).sendGTMEvent) {
@@ -292,7 +292,7 @@ const Contact = () => {
         </motion.div>
 
         <Typography variant="h5" sx={{ mb: 4, opacity: 0.9 }}>
-          נשמח להפוך את האירוע שלכם לחוויה מוזיקלית בלתי נשכחת
+          נשמח להפוך את בר המצווה שלכם לחוויה מוזיקלית בלתי נשכחת עם פייטן מקצועי בבאר שבע
         </Typography>
 
         <InfoItem>
@@ -305,7 +305,7 @@ const Contact = () => {
         <InfoItem>
           <LocationOnIcon />
           <Typography>
-            מופיע בכל רחבי הארץ
+            מופיע בכל רחבי באר שבע והדרום
           </Typography>
         </InfoItem>
 
